@@ -1,6 +1,6 @@
 /* 
  *  ==================================================
- *    Classe é responsável pela conexão com o MySql
+ *    Classe responsável pela conexão com o MySql
  *  ==================================================
 */
 
@@ -25,7 +25,7 @@ public class Conexao {
             conexao = DriverManager.getConnection(url,usuario,senha);
             JOptionPane.showMessageDialog(null, "Conexão estabelecida", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
         } catch (ClassNotFoundException Driver) {
-            JOptionPane.showMessageDialog(null, "Driver não localizado" + Driver, "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Driver não localizado" + driver, "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
             result = false;
         } catch (SQLException fonte) {
             JOptionPane.showMessageDialog(null, "Fonte de dados não localizada!" + fonte, "Mensagem do programa", JOptionPane.INFORMATION_MESSAGE);
