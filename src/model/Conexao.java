@@ -1,6 +1,6 @@
 /* 
  *  ==================================================
- *  Essa classe é responsável pela conexão com o MySql
+ *    Classe é responsável pela conexão com o MySql
  *  ==================================================
 */
 
@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class Conexao {
     final private String driver = "com.mysql.cj.jdbc.Driver";
-    final private String url = "jdbc:mysql://localhost/"; // adicionar caminho dps
+    final private String url = "jdbc:mysql://localhost/"; // adicionar o caminho dps
     final private String usuario = "root";
     final private String senha = "";
     private Connection conexao;
