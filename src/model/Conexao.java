@@ -11,7 +11,7 @@ import java.sql.*;
 
 public class Conexao {
     final private String driver = "com.mysql.cj.jdbc.Driver";
-    final private String url = "jdbc:mysql://localhost/"; // adicionar o caminho dps
+    final private String url = "jdbc:mysql://localhost/bd_locadora"; // adicionar o caminho dps
     final private String usuario = "root";
     final private String senha = "";
     private Connection conexao;
