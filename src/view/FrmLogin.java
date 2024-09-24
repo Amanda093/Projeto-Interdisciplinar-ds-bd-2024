@@ -6,6 +6,7 @@ package view;
 
 import model.Conexao;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,9 +19,12 @@ public class FrmLogin extends javax.swing.JFrame {
      * Creates new form FrmLogin
      */
     public FrmLogin() {
+        ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
+        setIconImage(icone.getImage());
         initComponents();
         conexao = new Conexao();
         conexao.conecta();
+        getRootPane().setDefaultButton(jButton1);
     }
 
     /**
@@ -156,7 +160,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Os dados digitados não foram localizados! \n"+errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                 }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
