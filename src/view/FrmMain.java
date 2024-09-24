@@ -114,7 +114,7 @@ public class FrmMain extends javax.swing.JFrame {
         jToolBar1.add(jButton5);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Logo");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gamesphere.png"))); // NOI18N
         jLabel1.setName("lblLogo"); // NOI18N
 
         jMenuBar1.setName("mnbTabela"); // NOI18N

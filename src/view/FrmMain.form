@@ -234,7 +234,9 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Logo"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/gamesphere.png"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="lblLogo" noResource="true"/>
       </Properties>
     </Component>
