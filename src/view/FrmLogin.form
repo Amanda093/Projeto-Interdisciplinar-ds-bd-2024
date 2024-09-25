@@ -90,7 +90,7 @@
           <Font name="Segoe UI" size="36" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
+          <Color blue="57" green="4a" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Login"/>
@@ -155,7 +155,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Logar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor em Forma de M&#xe3;o"/>
+          <Color id="Default Cursor"/>
         </Property>
         <Property name="name" type="java.lang.String" value="btnLogin" noResource="true"/>
       </Properties>

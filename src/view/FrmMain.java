@@ -31,6 +31,7 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -52,6 +53,17 @@ public class FrmMain extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GameSphere");
         setName("FrmMain"); // NOI18N
@@ -63,6 +75,8 @@ public class FrmMain extends javax.swing.JFrame {
         jButton1.setText("Cliente");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setMaximumSize(new java.awt.Dimension(64, 64));
+        jButton1.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton1.setName("jtbCliente"); // NOI18N
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +89,8 @@ public class FrmMain extends javax.swing.JFrame {
         jButton2.setText("Produto");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setMaximumSize(new java.awt.Dimension(64, 64));
+        jButton2.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton2.setName("jtbProduto"); // NOI18N
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +103,8 @@ public class FrmMain extends javax.swing.JFrame {
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setLabel("Reserva");
+        jButton3.setMaximumSize(new java.awt.Dimension(64, 64));
+        jButton3.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton3.setName("jtbReserva"); // NOI18N
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -96,10 +114,12 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton3);
 
-        jButton4.setText("Desenvolvedores");
+        jButton4.setText("Sobre");
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setName("jtbDesenvolvedores"); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(64, 64));
+        jButton4.setMinimumSize(new java.awt.Dimension(64, 64));
+        jButton4.setName("jtbSobre"); // NOI18N
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +131,8 @@ public class FrmMain extends javax.swing.JFrame {
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setLabel("Sair");
+        jButton5.setMaximumSize(new java.awt.Dimension(64, 64));
+        jButton5.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton5.setName("jtbSair"); // NOI18N
         jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -204,8 +226,8 @@ public class FrmMain extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu2.setText("Desenvolvedores");
-        jMenu2.setName("menDesenvolvedores"); // NOI18N
+        jMenu2.setText("Sobre");
+        jMenu2.setName("menSobre"); // NOI18N
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -248,9 +270,9 @@ public class FrmMain extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
         );
 
         pack();
@@ -393,6 +415,7 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
