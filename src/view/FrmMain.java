@@ -71,8 +71,10 @@ public class FrmMain extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
         jToolBar1.setBorderPainted(false);
+        jToolBar1.setName("GameSphere Toolbar"); // NOI18N
 
-        jButton1.setText("Cliente");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
+        jButton1.setToolTipText("Cliente");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setMaximumSize(new java.awt.Dimension(64, 64));
@@ -86,7 +88,8 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton1);
 
-        jButton2.setText("Produto");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
+        jButton2.setToolTipText("Produto");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setMaximumSize(new java.awt.Dimension(64, 64));
@@ -100,9 +103,11 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton2);
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reserva.png"))); // NOI18N
+        jButton3.setText("");
+        jButton3.setToolTipText("Reserva");
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setLabel("Reserva");
         jButton3.setMaximumSize(new java.awt.Dimension(64, 64));
         jButton3.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton3.setName("jtbReserva"); // NOI18N
@@ -114,7 +119,8 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton3);
 
-        jButton4.setText("Sobre");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sobre.png"))); // NOI18N
+        jButton4.setToolTipText("Sobre");
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMaximumSize(new java.awt.Dimension(64, 64));
@@ -128,9 +134,11 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton4);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sair.png"))); // NOI18N
+        jButton5.setText("");
+        jButton5.setToolTipText("Sair");
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setLabel("Sair");
         jButton5.setMaximumSize(new java.awt.Dimension(64, 64));
         jButton5.setMinimumSize(new java.awt.Dimension(64, 64));
         jButton5.setName("jtbSair"); // NOI18N
