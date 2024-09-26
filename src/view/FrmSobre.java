@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author noeba
  */
-public class FrmDesenvolvedores extends javax.swing.JFrame {
+public class FrmSobre extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmDesenvolvedores
      */
-    public FrmDesenvolvedores() {
+    public FrmSobre() {
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
         initComponents();
@@ -31,53 +31,53 @@ public class FrmDesenvolvedores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblTitulo1 = new javax.swing.JLabel();
+        lblCarlos = new javax.swing.JLabel();
+        lblAmanda = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
+        lblSakiri = new javax.swing.JLabel();
+        lblTitulo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Créditos");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 74, 87));
-        jLabel1.setText("Locadora de Games ");
-        jLabel1.setName("Desenvolvido Por"); // NOI18N
+        lblTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo1.setForeground(new java.awt.Color(255, 74, 87));
+        lblTitulo1.setText("Locadora de Games ");
+        lblTitulo1.setName("Desenvolvido Por"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setText("Carlos Henrique Rodrigues Barile");
-        jLabel2.setName("Carlos"); // NOI18N
+        lblCarlos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblCarlos.setText("Carlos Henrique Rodrigues Barile");
+        lblCarlos.setName("Carlos"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setText("Amanda Farias da Rocha");
-        jLabel3.setName("Amanda"); // NOI18N
+        lblAmanda.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblAmanda.setText("Amanda Farias da Rocha");
+        lblAmanda.setName("Amanda"); // NOI18N
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gamesphere-logo.png"))); // NOI18N
-        jLabel4.setName("lblLogo"); // NOI18N
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gamesphere-logo.png"))); // NOI18N
+        lblLogo.setName("lblLogo"); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("Voltar");
-        jButton1.setToolTipText("Voltar para a pagina inicial");
-        jButton1.setName("btnVoltar"); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.setToolTipText("Voltar para a pagina inicial");
+        btnVoltar.setName("btnVoltar"); // NOI18N
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel5.setText("Sakiri Moon P. Cestari");
-        jLabel5.setName("Sakiri"); // NOI18N
+        lblSakiri.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSakiri.setText("Sakiri Moon P. Cestari");
+        lblSakiri.setName("Sakiri"); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 74, 87));
-        jLabel6.setText("& Eletronicos");
-        jLabel6.setName("Desenvolvido Por"); // NOI18N
+        lblTitulo2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo2.setForeground(new java.awt.Color(255, 74, 87));
+        lblTitulo2.setText("& Eletronicos");
+        lblTitulo2.setName("Desenvolvido Por"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,40 +87,40 @@ public class FrmDesenvolvedores extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblTitulo1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTitulo2)
+                            .addComponent(lblSakiri)
+                            .addComponent(lblAmanda)
+                            .addComponent(lblCarlos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addComponent(lblTitulo1)
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(lblTitulo2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(lblAmanda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
+                        .addComponent(lblCarlos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(lblSakiri)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(60, 60, 60))))
         );
 
@@ -128,11 +128,11 @@ public class FrmDesenvolvedores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         FrmMain mostra = new FrmMain();
         mostra.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,20 +151,21 @@ public class FrmDesenvolvedores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmDesenvolvedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmDesenvolvedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmDesenvolvedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmDesenvolvedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmDesenvolvedores().setVisible(true);
+                new FrmSobre().setVisible(true);
             }
         });
     }
@@ -175,12 +176,12 @@ public class FrmDesenvolvedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel lblAmanda;
+    private javax.swing.JLabel lblCarlos;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblSakiri;
+    private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo2;
     // End of variables declaration//GEN-END:variables
 }

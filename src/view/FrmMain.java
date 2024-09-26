@@ -32,26 +32,26 @@ public class FrmMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jtbGameSphere = new javax.swing.JToolBar();
+        jtbCliente = new javax.swing.JButton();
+        jtbProduto = new javax.swing.JButton();
+        jtbReserva = new javax.swing.JButton();
+        jtbSobre = new javax.swing.JButton();
+        jtbSair = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
+        menMenu = new javax.swing.JMenuBar();
+        menCliente = new javax.swing.JMenu();
+        iteCliente = new javax.swing.JMenuItem();
+        iteFuncionario = new javax.swing.JMenuItem();
+        iteFornecedor = new javax.swing.JMenuItem();
+        menProduto = new javax.swing.JMenu();
+        iteProduto = new javax.swing.JMenuItem();
+        iteTipoproduto = new javax.swing.JMenuItem();
+        menReserva = new javax.swing.JMenu();
+        iteReserva = new javax.swing.JMenuItem();
+        iteTiporeserva = new javax.swing.JMenuItem();
+        menSobre = new javax.swing.JMenu();
+        menSair = new javax.swing.JMenu();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,299 +69,297 @@ public class FrmMain extends javax.swing.JFrame {
         setName("FrmMain"); // NOI18N
         setResizable(false);
 
-        jToolBar1.setRollover(true);
-        jToolBar1.setBorderPainted(false);
-        jToolBar1.setName("GameSphere Toolbar"); // NOI18N
+        jtbGameSphere.setRollover(true);
+        jtbGameSphere.setBorderPainted(false);
+        jtbGameSphere.setName("GameSphere Toolbar"); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
-        jButton1.setToolTipText("Cliente");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(64, 64));
-        jButton1.setMinimumSize(new java.awt.Dimension(64, 64));
-        jButton1.setName("jtbCliente"); // NOI18N
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jtbCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
+        jtbCliente.setToolTipText("Cliente");
+        jtbCliente.setFocusable(false);
+        jtbCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jtbCliente.setMaximumSize(new java.awt.Dimension(64, 64));
+        jtbCliente.setMinimumSize(new java.awt.Dimension(64, 64));
+        jtbCliente.setName("jtbCliente"); // NOI18N
+        jtbCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jtbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jtbClienteActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jtbGameSphere.add(jtbCliente);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
-        jButton2.setToolTipText("Produto");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMaximumSize(new java.awt.Dimension(64, 64));
-        jButton2.setMinimumSize(new java.awt.Dimension(64, 64));
-        jButton2.setName("jtbProduto"); // NOI18N
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jtbProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produto.png"))); // NOI18N
+        jtbProduto.setToolTipText("Produto");
+        jtbProduto.setFocusable(false);
+        jtbProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jtbProduto.setMaximumSize(new java.awt.Dimension(64, 64));
+        jtbProduto.setMinimumSize(new java.awt.Dimension(64, 64));
+        jtbProduto.setName("jtbProduto"); // NOI18N
+        jtbProduto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jtbProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jtbProdutoActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jtbGameSphere.add(jtbProduto);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reserva.png"))); // NOI18N
-        jButton3.setText("");
-        jButton3.setToolTipText("Reserva");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMaximumSize(new java.awt.Dimension(64, 64));
-        jButton3.setMinimumSize(new java.awt.Dimension(64, 64));
-        jButton3.setName("jtbReserva"); // NOI18N
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jtbReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reserva.png"))); // NOI18N
+        jtbReserva.setToolTipText("Reserva");
+        jtbReserva.setFocusable(false);
+        jtbReserva.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jtbReserva.setMaximumSize(new java.awt.Dimension(64, 64));
+        jtbReserva.setMinimumSize(new java.awt.Dimension(64, 64));
+        jtbReserva.setName("jtbReserva"); // NOI18N
+        jtbReserva.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jtbReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jtbReservaActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton3);
+        jtbGameSphere.add(jtbReserva);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sobre.png"))); // NOI18N
-        jButton4.setToolTipText("Sobre");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setMaximumSize(new java.awt.Dimension(64, 64));
-        jButton4.setMinimumSize(new java.awt.Dimension(64, 64));
-        jButton4.setName("jtbSobre"); // NOI18N
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jtbSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sobre.png"))); // NOI18N
+        jtbSobre.setToolTipText("Sobre");
+        jtbSobre.setFocusable(false);
+        jtbSobre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jtbSobre.setMaximumSize(new java.awt.Dimension(64, 64));
+        jtbSobre.setMinimumSize(new java.awt.Dimension(64, 64));
+        jtbSobre.setName("jtbSobre"); // NOI18N
+        jtbSobre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jtbSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jtbSobreActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton4);
+        jtbGameSphere.add(jtbSobre);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sair.png"))); // NOI18N
-        jButton5.setText("");
-        jButton5.setToolTipText("Sair");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMaximumSize(new java.awt.Dimension(64, 64));
-        jButton5.setMinimumSize(new java.awt.Dimension(64, 64));
-        jButton5.setName("jtbSair"); // NOI18N
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jtbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sair.png"))); // NOI18N
+        jtbSair.setToolTipText("Sair");
+        jtbSair.setFocusable(false);
+        jtbSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jtbSair.setMaximumSize(new java.awt.Dimension(64, 64));
+        jtbSair.setMinimumSize(new java.awt.Dimension(64, 64));
+        jtbSair.setName("jtbSair"); // NOI18N
+        jtbSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jtbSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jtbSairActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton5);
+        jtbGameSphere.add(jtbSair);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gamesphere.png"))); // NOI18N
-        jLabel1.setName("lblLogo"); // NOI18N
+        lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gamesphere.png"))); // NOI18N
+        lblLogo.setName("lblLogo"); // NOI18N
 
-        jMenuBar1.setName("mnbTabela"); // NOI18N
+        menMenu.setName("mnbTabela"); // NOI18N
 
-        jMenu1.setText("Pessoas");
-        jMenu1.setName("menCliente"); // NOI18N
+        menCliente.setText("Pessoas");
+        menCliente.setName("menCliente"); // NOI18N
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.setName("Cliente"); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        iteCliente.setText("Cliente");
+        iteCliente.setName("Cliente"); // NOI18N
+        iteCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                iteClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menCliente.add(iteCliente);
 
-        jMenuItem3.setText("Funcionario");
-        jMenuItem3.setName("Funcionario"); // NOI18N
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        iteFuncionario.setText("Funcionario");
+        iteFuncionario.setName("Funcionario"); // NOI18N
+        iteFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                iteFuncionarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        menCliente.add(iteFuncionario);
 
-        jMenuItem2.setText("Fornecedor");
-        jMenuItem2.setName("Fornecedor"); // NOI18N
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        iteFornecedor.setText("Fornecedor");
+        iteFornecedor.setName("Fornecedor"); // NOI18N
+        iteFornecedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                iteFornecedorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menCliente.add(iteFornecedor);
 
-        jMenuBar1.add(jMenu1);
+        menMenu.add(menCliente);
 
-        jMenu6.setText("Produto");
-        jMenu6.setName("menProduto"); // NOI18N
+        menProduto.setText("Produto");
+        menProduto.setName("menProduto"); // NOI18N
 
-        jMenuItem4.setText("Produto");
-        jMenuItem4.setName("Produto"); // NOI18N
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        iteProduto.setText("Produto");
+        iteProduto.setName("Produto"); // NOI18N
+        iteProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                iteProdutoActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem4);
+        menProduto.add(iteProduto);
 
-        jMenuItem5.setText("Tipo Produto");
-        jMenuItem5.setName("Tipo Produto"); // NOI18N
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        iteTipoproduto.setText("Tipo Produto");
+        iteTipoproduto.setName("Tipo Produto"); // NOI18N
+        iteTipoproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                iteTipoprodutoActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem5);
+        menProduto.add(iteTipoproduto);
 
-        jMenuBar1.add(jMenu6);
+        menMenu.add(menProduto);
 
-        jMenu7.setText("Reserva");
-        jMenu7.setName("menReserva"); // NOI18N
+        menReserva.setText("Reserva");
+        menReserva.setName("menReserva"); // NOI18N
 
-        jMenuItem6.setText("Reserva");
-        jMenuItem6.setName("Reserva"); // NOI18N
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        iteReserva.setText("Reserva");
+        iteReserva.setName("Reserva"); // NOI18N
+        iteReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                iteReservaActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem6);
+        menReserva.add(iteReserva);
 
-        jMenuItem7.setText("Tipo Reserva");
-        jMenuItem7.setName("Tipo Reserva"); // NOI18N
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        iteTiporeserva.setText("Tipo Reserva");
+        iteTiporeserva.setName("Tipo Reserva"); // NOI18N
+        iteTiporeserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                iteTiporeservaActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem7);
+        menReserva.add(iteTiporeserva);
 
-        jMenuBar1.add(jMenu7);
+        menMenu.add(menReserva);
 
-        jMenu2.setText("Sobre");
-        jMenu2.setName("menSobre"); // NOI18N
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+        menSobre.setText("Sobre");
+        menSobre.setName("menSobre"); // NOI18N
+        menSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
+                menSobreMouseClicked(evt);
             }
         });
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        menSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                menSobreActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        menMenu.add(menSobre);
 
-        jMenu3.setText("Sair");
-        jMenu3.setName("menSair"); // NOI18N
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        menSair.setText("Sair");
+        menSair.setName("menSair"); // NOI18N
+        menSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                menSairMouseClicked(evt);
             }
         });
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        menSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                menSairActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu3);
+        menMenu.add(menSair);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtbGameSphere, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtbGameSphere, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
+                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void iteClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteClienteActionPerformed
         abrirCRUD("Cliente");
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_iteClienteActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void iteFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteFornecedorActionPerformed
         abrirCRUD("Fornecedor");
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_iteFornecedorActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void iteFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteFuncionarioActionPerformed
         abrirCRUD("Funcionario");
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_iteFuncionarioActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void iteProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteProdutoActionPerformed
         abrirCRUD("Produto");
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_iteProdutoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void iteTipoprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteTipoprodutoActionPerformed
         abrirCRUD("Tipo do Produto");
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_iteTipoprodutoActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void iteReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteReservaActionPerformed
         abrirCRUD("Reserva");
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_iteReservaActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void iteTiporeservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteTiporeservaActionPerformed
         abrirCRUD("Tipo da Reserva");
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_iteTiporeservaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jtbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbClienteActionPerformed
         abrirCRUD("Cliente");
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jtbClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jtbProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbProdutoActionPerformed
         abrirCRUD("Produto");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jtbProdutoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jtbReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbReservaActionPerformed
         abrirCRUD("Reserva");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jtbReservaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        FrmDesenvolvedores mostra = new FrmDesenvolvedores();
+    private void jtbSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbSobreActionPerformed
+        FrmSobre mostra = new FrmSobre();
         mostra.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jtbSobreActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jtbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbSairActionPerformed
        int opcao;
             Object[] botoes = {"Sim","Não"};
             opcao = JOptionPane.showOptionDialog(null,"Deseja mesmo fechar a janela?","Fechar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,botoes,botoes[0]);
             if (opcao==JOptionPane.YES_OPTION)
             System.exit(0); 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jtbSairActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void menSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menSobreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_menSobreActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void menSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menSairActionPerformed
 
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_menSairActionPerformed
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void menSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menSairMouseClicked
         int opcao;
             Object[] botoes = {"Sim","Não"};
             opcao = JOptionPane.showOptionDialog(null,"Deseja mesmo fechar a janela?","Fechar",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,botoes,botoes[0]);
             if (opcao==JOptionPane.YES_OPTION)
             System.exit(0);         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu3MouseClicked
+    }//GEN-LAST:event_menSairMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-        FrmDesenvolvedores mostra = new FrmDesenvolvedores();
+    private void menSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menSobreMouseClicked
+        FrmSobre mostra = new FrmSobre();
         mostra.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu2MouseClicked
+    }//GEN-LAST:event_menSobreMouseClicked
 
     /**
      * @param args the command line arguments
@@ -404,26 +402,26 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem iteCliente;
+    private javax.swing.JMenuItem iteFornecedor;
+    private javax.swing.JMenuItem iteFuncionario;
+    private javax.swing.JMenuItem iteProduto;
+    private javax.swing.JMenuItem iteReserva;
+    private javax.swing.JMenuItem iteTipoproduto;
+    private javax.swing.JMenuItem iteTiporeserva;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton jtbCliente;
+    private javax.swing.JToolBar jtbGameSphere;
+    private javax.swing.JButton jtbProduto;
+    private javax.swing.JButton jtbReserva;
+    private javax.swing.JButton jtbSair;
+    private javax.swing.JButton jtbSobre;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JMenu menCliente;
+    private javax.swing.JMenuBar menMenu;
+    private javax.swing.JMenu menProduto;
+    private javax.swing.JMenu menReserva;
+    private javax.swing.JMenu menSair;
+    private javax.swing.JMenu menSobre;
     // End of variables declaration//GEN-END:variables
 }
