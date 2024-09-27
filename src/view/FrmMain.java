@@ -5,7 +5,7 @@
 package view;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -372,16 +372,12 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menSairMouseClicked
 
     private void menSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menSobreMouseClicked
-        FrmSobre mostra = new FrmSobre();
-        mostra.setVisible(true);
-        dispose();
+        new FrmSobre().setVisible(true);
     }//GEN-LAST:event_menSobreMouseClicked
 
 
     public void abrirCRUD(String table){
-    FrmCrud mostra = new FrmCrud(table);
-        mostra.setVisible(true);
-        dispose();
+        new FrmCrud(table).setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

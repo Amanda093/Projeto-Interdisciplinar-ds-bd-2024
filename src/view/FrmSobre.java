@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Dialog;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -11,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author noeba
  */
-public class FrmSobre extends javax.swing.JFrame {
+public class FrmSobre extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmDesenvolvedores
@@ -19,6 +20,7 @@ public class FrmSobre extends javax.swing.JFrame {
     public FrmSobre() {
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
+        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         initComponents();
          try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -55,7 +57,7 @@ public class FrmSobre extends javax.swing.JFrame {
         lblSakiri = new javax.swing.JLabel();
         lblTitulo2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Créditos");
         setResizable(false);
 
@@ -154,8 +156,6 @@ public class FrmSobre extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public void abrirCRUD(String table){
-    FrmCrud mostra = new FrmCrud(table);
-        mostra.setVisible(true);
         dispose();
     }
 

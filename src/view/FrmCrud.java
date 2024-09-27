@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import model.Conexao;
  *
  * @author noeba
  */
-public class FrmCrud extends javax.swing.JFrame {
+public class FrmCrud extends javax.swing.JDialog {
     Conexao conexao;
     /**
      * Creates new form FrmCrud
@@ -28,6 +29,7 @@ public class FrmCrud extends javax.swing.JFrame {
         
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
+        setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         initComponents();
          try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -518,7 +520,7 @@ public class FrmCrud extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -716,7 +718,6 @@ public class FrmCrud extends javax.swing.JFrame {
             }
         });
 
-        tblCrud.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         tblCrud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -894,8 +895,6 @@ public class FrmCrud extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        FrmMain mostra = new FrmMain();
-        mostra.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
