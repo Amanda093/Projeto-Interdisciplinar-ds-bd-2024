@@ -4,19 +4,28 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.Conexao;
 
 /**
  *
  * @author noeba
  */
 public class FrmCrud extends javax.swing.JFrame {
-
+    Conexao conexao;
     /**
      * Creates new form FrmCrud
      */
     public FrmCrud(String table) {
+        conexao = new Conexao();
+        conexao.conecta();
+        
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
         initComponents();
@@ -38,6 +47,14 @@ public class FrmCrud extends javax.swing.JFrame {
         };
         lblTitulo.setText(table);
         setTitle(table);
+        tblCrud.setFocusable(false);
+        tblCrud.setIntercellSpacing(new Dimension(0, 0));
+        tblCrud.setRowHeight(25);
+        tblCrud.setGridColor(new Color(240, 240, 240));
+        tblCrud.setSelectionBackground(new Color(217, 235, 249));
+        tblCrud.getTableHeader().setFont(new Font("", Font.BOLD, 12));
+        tblCrud.setSelectionForeground(Color.BLACK);
+
         switch(table){
             case "Cliente":
                 getContentPane().remove(lblCampo9);
@@ -53,6 +70,40 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo4.setText("Endereco:");
                 lblCampo5.setText("RG:");
                 lblCampo6.setText("CPF:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null, null, null, null, null}
+                },
+                new String [] {"CodCliente", "Nome", "Telefone", "Endereco", "RG", "CPF"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false, false, false, false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from cliente order by CodCliente");
+        
+                DefaultTableModel modelocliente = (DefaultTableModel) tblCrud.getModel();
+                modelocliente.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelocliente.addRow(new Object[] {
+                        conexao.resultset.getString("CodCliente"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("Endereco"),
+                        conexao.resultset.getString("RG"),
+                        conexao.resultset.getString("CPF")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Fornecedor":
@@ -71,6 +122,40 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo3.setText("CNPJ:");
                 lblCampo4.setText("Telefone:");
                 lblCampo5.setText("Endereco:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null, null, null, null}
+                },
+                new String [] {"CodFornecedor", "Nome", "CNPJ", "Telefone", "Endereco"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false, false, false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from fornecedor order by CodFornecedor");
+        
+                DefaultTableModel modelofornecedor = (DefaultTableModel) tblCrud.getModel();
+                modelofornecedor.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelofornecedor.addRow(new Object[] {
+                        conexao.resultset.getString("CodFornecedor"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("CNPJ"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("endereco")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Funcionario":
@@ -83,6 +168,51 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo7.setText("CPF:");
                 lblCampo8.setText("Usuario:");
                 lblCampo9.setText("Senha:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null, null}
+                },
+                new String [] {"CodFuncionario", "Nome", "Salario", "Email", "Telefone", "RG", "CPF", "Usuario", "Senha"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false, false, false, false, false, false, false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from funcionario order by CodFuncionario");
+        
+                DefaultTableModel modelofuncionario = (DefaultTableModel) tblCrud.getModel();
+                modelofuncionario.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelofuncionario.addRow(new Object[] {
+                        conexao.resultset.getString("CodFuncionario"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Salario"),
+                        conexao.resultset.getString("Email"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("RG"),
+                        conexao.resultset.getString("CPF"),
+                        conexao.resultset.getString("Usuario"),
+                        conexao.resultset.getString("Senha")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Produto":
@@ -101,6 +231,52 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo3.setText("Preco:");
                 lblCampo4.setText("CodTipoProd:");
                 lblCampo5.setText("CodFornecedor:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null},
+                    {null, null, null, null, null}
+                },
+                new String [] {"CodProduto", "Nome", "Preco", "CodTipoProd", "CodFornecedor"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false, false, false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from produto order by CodProduto");
+        
+                DefaultTableModel modeloproduto = (DefaultTableModel) tblCrud.getModel();
+                modeloproduto.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modeloproduto.addRow(new Object[] {
+                        conexao.resultset.getString("CodProduto"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Preco"),
+                        conexao.resultset.getString("CodTipoProd"),
+                        conexao.resultset.getString("CodFornecedor")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Reserva":
@@ -116,6 +292,51 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo5.setText("CodCliente:");
                 lblCampo6.setText("CodFuncionario:");
                 lblCampo7.setText("CodProduto:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null},
+                    {null, null, null, null, null, null, null, null}
+                },
+                new String [] {"CodReserva", "DataInicial", "DataFinal", "CodTipoReserva", "CodCliente", "CodFuncionario", "CodProduto"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false, false, false, false, false, false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from reserva order by CodReserva");
+        
+                DefaultTableModel modeloreserva = (DefaultTableModel) tblCrud.getModel();
+                modeloreserva.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modeloreserva.addRow(new Object[] {
+                        conexao.resultset.getString("CodReserva"),
+                        conexao.resultset.getString("DataInicial"),
+                        conexao.resultset.getString("DataFinal"),
+                        conexao.resultset.getString("CodTipoReserva"),
+                        conexao.resultset.getString("CodCliente"),
+                        conexao.resultset.getString("CodFuncionario"),
+                        conexao.resultset.getString("CodProduto")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Tipo do Produto":
@@ -136,6 +357,52 @@ public class FrmCrud extends javax.swing.JFrame {
                 
                 lblCampo2.setText("CodTipoProd:");
                 lblCampo3.setText("Descricao:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null}
+                },
+                new String [] {"CodTipoProd", "Descricao"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from tipo_produto order by CodTipoProd");
+        
+                DefaultTableModel modelotipoprod = (DefaultTableModel) tblCrud.getModel();
+                modelotipoprod.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelotipoprod.addRow(new Object[] {
+                        conexao.resultset.getString("CodTipoProd"),
+                        conexao.resultset.getString("Descricao")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             case "Tipo da Reserva":
@@ -156,6 +423,52 @@ public class FrmCrud extends javax.swing.JFrame {
                 
                 lblCampo2.setText("CodTipoReserva:");
                 lblCampo3.setText("Descricao:");
+                tblCrud.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [] [] {
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null},
+                    {null, null}
+                },
+                new String [] {"CodTipoReserva", "Descricao"})
+                {
+                boolean[] canEdit = new boolean []{
+                false, false};
+        
+                public boolean isCellEditable(int rowIndex, int columnIndex){
+                return canEdit [columnIndex];}
+                });
+                
+                tblCrud.setAutoCreateRowSorter(true);
+
+                conexao.executaSQL("select * from tipo_reserva order by CodTipoReserva");
+        
+                DefaultTableModel modelotiporeserva = (DefaultTableModel) tblCrud.getModel();
+                modelotiporeserva.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelotiporeserva.addRow(new Object[] {
+                        conexao.resultset.getString("CodTipoReserva"),
+                        conexao.resultset.getString("Descricao")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
             break;
             
             default:
@@ -403,6 +716,7 @@ public class FrmCrud extends javax.swing.JFrame {
             }
         });
 
+        tblCrud.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         tblCrud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
