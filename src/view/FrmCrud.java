@@ -20,16 +20,32 @@ public class FrmCrud extends javax.swing.JFrame {
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
         initComponents();
+         try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        };
         lblTitulo.setText(table);
         setTitle(table);
         switch(table){
             case "Cliente":
-                getContentPane().remove(lblCampo7);
                 getContentPane().remove(lblCampo9);
                 getContentPane().remove(lblCampo8);
+                getContentPane().remove(lblCampo7);
                 getContentPane().remove(txtCampo9);
-                getContentPane().remove(txtCampo7);
                 getContentPane().remove(txtCampo8);
+                getContentPane().remove(txtCampo7);
                 
                 lblCampo1.setText("CodCliente:");
                 lblCampo2.setText("Nome:");
@@ -37,6 +53,109 @@ public class FrmCrud extends javax.swing.JFrame {
                 lblCampo4.setText("Endereco:");
                 lblCampo5.setText("RG:");
                 lblCampo6.setText("CPF:");
+            break;
+            
+            case "Fornecedor":
+                
+                getContentPane().remove(lblCampo9);
+                getContentPane().remove(lblCampo8);
+                getContentPane().remove(lblCampo7);
+                getContentPane().remove(lblCampo6);
+                getContentPane().remove(txtCampo9);
+                getContentPane().remove(txtCampo8);
+                getContentPane().remove(txtCampo7);
+                getContentPane().remove(txtCampo6);
+                
+                lblCampo1.setText("CodFornecedor:");
+                lblCampo2.setText("Nome:");
+                lblCampo3.setText("CNPJ:");
+                lblCampo4.setText("Telefone:");
+                lblCampo5.setText("Endereco:");
+            break;
+            
+            case "Funcionario":
+                lblCampo1.setText("CodFuncionario:");
+                lblCampo2.setText("Nome:");
+                lblCampo3.setText("Salario:");
+                lblCampo4.setText("Email:");
+                lblCampo5.setText("Telefone:");
+                lblCampo6.setText("RG:");
+                lblCampo7.setText("CPF:");
+                lblCampo8.setText("Usuario:");
+                lblCampo9.setText("Senha:");
+            break;
+            
+            case "Produto":
+                
+                getContentPane().remove(lblCampo9);
+                getContentPane().remove(lblCampo8);
+                getContentPane().remove(lblCampo7);
+                getContentPane().remove(lblCampo6);
+                getContentPane().remove(txtCampo9);
+                getContentPane().remove(txtCampo8);
+                getContentPane().remove(txtCampo7);
+                getContentPane().remove(txtCampo6);
+                
+                lblCampo1.setText("CodProduto:");
+                lblCampo2.setText("Nome:");
+                lblCampo3.setText("Preco:");
+                lblCampo4.setText("CodTipoProd:");
+                lblCampo5.setText("CodFornecedor:");
+            break;
+            
+            case "Reserva":
+                getContentPane().remove(lblCampo9);
+                getContentPane().remove(lblCampo8);
+                getContentPane().remove(txtCampo9);
+                getContentPane().remove(txtCampo8);
+                
+                lblCampo1.setText("CodReserva:");
+                lblCampo2.setText("DataInicial:");
+                lblCampo3.setText("DataFinal:");
+                lblCampo4.setText("CodTipoReserva:");
+                lblCampo5.setText("CodCliente:");
+                lblCampo6.setText("CodFuncionario:");
+                lblCampo7.setText("CodProduto:");
+            break;
+            
+            case "Tipo do Produto":
+                getContentPane().remove(lblCampo9);
+                getContentPane().remove(lblCampo8);
+                getContentPane().remove(lblCampo7);
+                getContentPane().remove(lblCampo6);
+                getContentPane().remove(lblCampo5);
+                getContentPane().remove(lblCampo4);
+                getContentPane().remove(lblCampo1);
+                getContentPane().remove(txtCampo9);
+                getContentPane().remove(txtCampo8);
+                getContentPane().remove(txtCampo7);
+                getContentPane().remove(txtCampo6);
+                getContentPane().remove(txtCampo5);
+                getContentPane().remove(txtCampo4);
+                getContentPane().remove(txtCampo1);
+                
+                lblCampo2.setText("CodTipoProd:");
+                lblCampo3.setText("Descricao:");
+            break;
+            
+            case "Tipo da Reserva":
+                getContentPane().remove(lblCampo9);
+                getContentPane().remove(lblCampo8);
+                getContentPane().remove(lblCampo7);
+                getContentPane().remove(lblCampo6);
+                getContentPane().remove(lblCampo5);
+                getContentPane().remove(lblCampo4);
+                getContentPane().remove(lblCampo1);
+                getContentPane().remove(txtCampo9);
+                getContentPane().remove(txtCampo8);
+                getContentPane().remove(txtCampo7);
+                getContentPane().remove(txtCampo6);
+                getContentPane().remove(txtCampo5);
+                getContentPane().remove(txtCampo4);
+                getContentPane().remove(txtCampo1);
+                
+                lblCampo2.setText("CodTipoReserva:");
+                lblCampo3.setText("Descricao:");
             break;
             
             default:
@@ -545,29 +664,7 @@ public class FrmCrud extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCrud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        };
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
