@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -20,12 +22,14 @@ import model.Conexao;
  */
 public class FrmCrud extends javax.swing.JDialog {
     Conexao conexao;
+    String table;
     /**
      * Creates new form FrmCrud
      */
     public FrmCrud(String table) {
         conexao = new Conexao();
         conexao.conecta();
+        this.table = table;
         
         ImageIcon icone = new ImageIcon("src/img/gamesphere-ico.png");
         setIconImage(icone.getImage());
@@ -58,6 +62,8 @@ public class FrmCrud extends javax.swing.JDialog {
         tblCrud.setSelectionForeground(Color.BLACK);
 
         switch(table){
+            
+            // ===== Tabela CLIENTE =====
             case "Cliente":
                 getContentPane().remove(lblCampo9);
                 getContentPane().remove(lblCampo8);
@@ -88,26 +94,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from cliente order by CodCliente");
         
-                DefaultTableModel modelocliente = (DefaultTableModel) tblCrud.getModel();
-                modelocliente.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modelocliente.addRow(new Object[] {
-                        conexao.resultset.getString("CodCliente"),
-                        conexao.resultset.getString("Nome"),
-                        conexao.resultset.getString("Telefone"),
-                        conexao.resultset.getString("Endereco"),
-                        conexao.resultset.getString("RG"),
-                        conexao.resultset.getString("CPF")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela FORNECEDOR =====
             case "Fornecedor":
                 
                 getContentPane().remove(lblCampo9);
@@ -141,25 +132,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from fornecedor order by CodFornecedor");
         
-                DefaultTableModel modelofornecedor = (DefaultTableModel) tblCrud.getModel();
-                modelofornecedor.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modelofornecedor.addRow(new Object[] {
-                        conexao.resultset.getString("CodFornecedor"),
-                        conexao.resultset.getString("Nome"),
-                        conexao.resultset.getString("CNPJ"),
-                        conexao.resultset.getString("Telefone"),
-                        conexao.resultset.getString("endereco")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela FUNCIONARIO =====
             case "Funcionario":
                 lblCampo1.setText("CodFuncionario:");
                 lblCampo2.setText("Nome:");
@@ -194,29 +171,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from funcionario order by CodFuncionario");
         
-                DefaultTableModel modelofuncionario = (DefaultTableModel) tblCrud.getModel();
-                modelofuncionario.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modelofuncionario.addRow(new Object[] {
-                        conexao.resultset.getString("CodFuncionario"),
-                        conexao.resultset.getString("Nome"),
-                        conexao.resultset.getString("Salario"),
-                        conexao.resultset.getString("Email"),
-                        conexao.resultset.getString("Telefone"),
-                        conexao.resultset.getString("RG"),
-                        conexao.resultset.getString("CPF"),
-                        conexao.resultset.getString("Usuario"),
-                        conexao.resultset.getString("Senha")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela PRODUTO =====
             case "Produto":
                 
                 getContentPane().remove(lblCampo9);
@@ -262,25 +221,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from produto order by CodProduto");
         
-                DefaultTableModel modeloproduto = (DefaultTableModel) tblCrud.getModel();
-                modeloproduto.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modeloproduto.addRow(new Object[] {
-                        conexao.resultset.getString("CodProduto"),
-                        conexao.resultset.getString("Nome"),
-                        conexao.resultset.getString("Preco"),
-                        conexao.resultset.getString("CodTipoProd"),
-                        conexao.resultset.getString("CodFornecedor")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela RESERVA =====
             case "Reserva":
                 getContentPane().remove(lblCampo9);
                 getContentPane().remove(lblCampo8);
@@ -294,6 +239,7 @@ public class FrmCrud extends javax.swing.JDialog {
                 lblCampo5.setText("CodCliente:");
                 lblCampo6.setText("CodFuncionario:");
                 lblCampo7.setText("CodProduto:");
+                
                 tblCrud.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [] [] {
                     {null, null, null, null, null, null, null, null},
@@ -320,27 +266,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from reserva order by CodReserva");
         
-                DefaultTableModel modeloreserva = (DefaultTableModel) tblCrud.getModel();
-                modeloreserva.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modeloreserva.addRow(new Object[] {
-                        conexao.resultset.getString("CodReserva"),
-                        conexao.resultset.getString("DataInicial"),
-                        conexao.resultset.getString("DataFinal"),
-                        conexao.resultset.getString("CodTipoReserva"),
-                        conexao.resultset.getString("CodCliente"),
-                        conexao.resultset.getString("CodFuncionario"),
-                        conexao.resultset.getString("CodProduto")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela TIPO DO PRODUTO =====
             case "Tipo do Produto":
                 getContentPane().remove(lblCampo9);
                 getContentPane().remove(lblCampo8);
@@ -391,22 +321,11 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from tipo_produto order by CodTipoProd");
         
-                DefaultTableModel modelotipoprod = (DefaultTableModel) tblCrud.getModel();
-                modelotipoprod.setNumRows(0);
-                try {
-                    conexao.resultset.beforeFirst();
-                    while(conexao.resultset.next()) {
-                        modelotipoprod.addRow(new Object[] {
-                        conexao.resultset.getString("CodTipoProd"),
-                        conexao.resultset.getString("Descricao")
-                        });
-                    }
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                preencheTabela(); 
                 
             break;
             
+            // ===== Tabela TIPO DA RESERVA =====
             case "Tipo da Reserva":
                 getContentPane().remove(lblCampo9);
                 getContentPane().remove(lblCampo8);
@@ -457,6 +376,233 @@ public class FrmCrud extends javax.swing.JDialog {
 
                 conexao.executaSQL("select * from tipo_reserva order by CodTipoReserva");
         
+                preencheTabela();      
+                
+            break;
+            
+            default:
+                
+        }
+    }
+    
+    
+    public void posicionaRegistro() {
+        try {
+            conexao.resultset.first(); //posiciona no 1° registro da tabela
+            apresentaDados(); // metódo que irá buscar os dados na tabela
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,"Não foi possível posicionar no primeiro registro: " 
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void apresentaDados() {
+        try {
+            switch(this.table){
+                case "Cliente":
+                    txtCampo1.setText(conexao.resultset.getString("CodCliente"));
+                    txtCampo2.setText(conexao.resultset.getString("Nome"));
+                    txtCampo3.setText(conexao.resultset.getString("Telefone"));
+                    txtCampo4.setText(conexao.resultset.getString("Endereco"));
+                    txtCampo5.setText(conexao.resultset.getString("RG"));
+                    txtCampo6.setText(conexao.resultset.getString("CPF"));
+                    break;
+                
+                case "Fornecedor":
+                    txtCampo1.setText(conexao.resultset.getString("CodFornecedor"));
+                    txtCampo2.setText(conexao.resultset.getString("Nome"));
+                    txtCampo3.setText(conexao.resultset.getString("CNPJ"));
+                    txtCampo4.setText(conexao.resultset.getString("Telefone"));
+                    txtCampo5.setText(conexao.resultset.getString("Endereco"));
+                    break;
+                    
+                case "Funcionario":
+                    txtCampo1.setText(conexao.resultset.getString("CodFuncionario"));
+                    txtCampo2.setText(conexao.resultset.getString("Nome"));
+                    txtCampo3.setText(conexao.resultset.getString("Salario"));
+                    txtCampo4.setText(conexao.resultset.getString("Email"));
+                    txtCampo5.setText(conexao.resultset.getString("Telefone"));
+                    txtCampo6.setText(conexao.resultset.getString("RG"));
+                    txtCampo7.setText(conexao.resultset.getString("CPF"));
+                    txtCampo8.setText(conexao.resultset.getString("Usuario"));
+                    txtCampo9.setText(conexao.resultset.getString("Senha"));
+                    break;
+                
+                case "Produto":
+                    txtCampo1.setText(conexao.resultset.getString("CodProduto"));
+                    txtCampo2.setText(conexao.resultset.getString("Nome"));
+                    txtCampo3.setText(conexao.resultset.getString("Preco"));
+                    txtCampo4.setText(conexao.resultset.getString("CodTipoProd"));
+                    txtCampo5.setText(conexao.resultset.getString("CodFornecedor"));
+                    break;
+                    
+                case "Reserva":
+                    txtCampo1.setText(conexao.resultset.getString("CodReserva"));
+                    txtCampo2.setText(conexao.resultset.getString("DataInicial"));
+                    txtCampo3.setText(conexao.resultset.getString("DataFinal"));
+                    txtCampo4.setText(conexao.resultset.getString("CodTipoReserva"));
+                    txtCampo5.setText(conexao.resultset.getString("CodCliente"));
+                    txtCampo6.setText(conexao.resultset.getString("CodFuncionario"));
+                    txtCampo7.setText(conexao.resultset.getString("CodProduto"));
+                    break;
+                    
+                case "Tipo do Produto":
+                    txtCampo1.setText(conexao.resultset.getString("CodTipoProd"));
+                    txtCampo2.setText(conexao.resultset.getString("Descricao"));
+                    break;
+                    
+                case "Tipo da Reserva":
+                    txtCampo1.setText(conexao.resultset.getString("CodTipoReserva"));
+                    txtCampo2.setText(conexao.resultset.getString("Descricao"));
+                    break;
+                default:
+            } 
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null,"Não localizou dados: " + erro, "Mensagem do Programa",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void preencheTabela() {
+        switch(this.table){
+            
+            // ===== Tabela CLIENTE =====
+            case "Cliente":
+        
+                DefaultTableModel modelocliente = (DefaultTableModel) tblCrud.getModel();
+                modelocliente.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelocliente.addRow(new Object[] {
+                        conexao.resultset.getString("CodCliente"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("Endereco"),
+                        conexao.resultset.getString("RG"),
+                        conexao.resultset.getString("CPF")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela FORNECEDOR =====
+            case "Fornecedor":
+        
+                DefaultTableModel modelofornecedor = (DefaultTableModel) tblCrud.getModel();
+                modelofornecedor.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelofornecedor.addRow(new Object[] {
+                        conexao.resultset.getString("CodFornecedor"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("CNPJ"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("endereco")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela FUNCIONARIO =====
+            case "Funcionario":
+        
+                DefaultTableModel modelofuncionario = (DefaultTableModel) tblCrud.getModel();
+                modelofuncionario.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelofuncionario.addRow(new Object[] {
+                        conexao.resultset.getString("CodFuncionario"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Salario"),
+                        conexao.resultset.getString("Email"),
+                        conexao.resultset.getString("Telefone"),
+                        conexao.resultset.getString("RG"),
+                        conexao.resultset.getString("CPF"),
+                        conexao.resultset.getString("Usuario"),
+                        conexao.resultset.getString("Senha")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela PRODUTO =====
+            case "Produto":
+        
+                DefaultTableModel modeloproduto = (DefaultTableModel) tblCrud.getModel();
+                modeloproduto.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modeloproduto.addRow(new Object[] {
+                        conexao.resultset.getString("CodProduto"),
+                        conexao.resultset.getString("Nome"),
+                        conexao.resultset.getString("Preco"),
+                        conexao.resultset.getString("CodTipoProd"),
+                        conexao.resultset.getString("CodFornecedor")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela RESERVA =====
+            case "Reserva":
+        
+                DefaultTableModel modeloreserva = (DefaultTableModel) tblCrud.getModel();
+                modeloreserva.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modeloreserva.addRow(new Object[] {
+                        conexao.resultset.getString("CodReserva"),
+                        conexao.resultset.getString("DataInicial"),
+                        conexao.resultset.getString("DataFinal"),
+                        conexao.resultset.getString("CodTipoReserva"),
+                        conexao.resultset.getString("CodCliente"),
+                        conexao.resultset.getString("CodFuncionario"),
+                        conexao.resultset.getString("CodProduto")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela TIPO DO PRODUTO =====
+            case "Tipo do Produto":
+                DefaultTableModel modelotipoprod = (DefaultTableModel) tblCrud.getModel();
+                modelotipoprod.setNumRows(0);
+                try {
+                    conexao.resultset.beforeFirst();
+                    while(conexao.resultset.next()) {
+                        modelotipoprod.addRow(new Object[] {
+                        conexao.resultset.getString("CodTipoProd"),
+                        conexao.resultset.getString("Descricao")
+                        });
+                    }
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+                
+            break;
+            
+            // ===== Tabela TIPO DA RESERVA =====
+            case "Tipo da Reserva":
                 DefaultTableModel modelotiporeserva = (DefaultTableModel) tblCrud.getModel();
                 modelotiporeserva.setNumRows(0);
                 try {
@@ -469,15 +615,14 @@ public class FrmCrud extends javax.swing.JDialog {
                     }
                 } catch (SQLException erro) {
                     JOptionPane.showMessageDialog(null, "\n Erro ao listar dados da tabela!! :\n " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                }
+                }        
                 
             break;
             
             default:
-                
         }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -934,20 +1079,45 @@ public class FrmCrud extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampo6ActionPerformed
 
+    // ===== Buttons =====
     private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
-        // TODO add your handling code here:
+        try {
+        conexao.resultset.first();
+        apresentaDados(); } 
+        catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }  
     }//GEN-LAST:event_btnPrimeiroActionPerformed
 
     private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
-        // TODO add your handling code here:
+        try {
+        conexao.resultset.last();
+        apresentaDados(); } 
+        catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }  
     }//GEN-LAST:event_btnUltimoActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-        // TODO add your handling code here:
+        try {
+        conexao.resultset.previous();
+        apresentaDados(); } 
+        catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }  
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
-        // TODO add your handling code here:
+        try {
+        conexao.resultset.next();
+        apresentaDados(); } 
+        catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }  
     }//GEN-LAST:event_btnProximoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -955,7 +1125,19 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        // TODO add your handling code here:
+        try {
+            String pesquisa = "select * from Cliente where nome like '" + txtPesquisa.getText() + "%'";
+            conexao.executaSQL(pesquisa);
+                   
+            if(conexao.resultset.first()) {
+                preencheTabela();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "\n Não existe dados com este paramêtro!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);                       
+            }
+        } catch (SQLException errosql) {
+            JOptionPane.showMessageDialog(null,"\n Os dados digitados não foram localizados!! :\n " + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
@@ -967,7 +1149,17 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        // TODO add your handling code here:
+        txtCampo1.setText(""); 
+        txtCampo3.setText(""); 
+        txtCampo2.setText("");
+        txtCampo4.setText(""); 
+        txtCampo5.setText("");
+        txtCampo6.setText("");
+        txtCampo7.setText("");
+        txtCampo8.setText("");
+        txtCampo9.setText("");
+        txtCampo1.requestFocus(); // PK de todas as tabelas
+  
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
