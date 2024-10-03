@@ -1082,7 +1082,7 @@ public class FrmCrud extends javax.swing.JDialog {
     // ===== Buttons =====
     private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
         try {
-        conexao.resultset.first();
+        conexao.resultset.first(); // vai para o primeiro registro
         apresentaDados(); } 
         catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
@@ -1092,7 +1092,7 @@ public class FrmCrud extends javax.swing.JDialog {
 
     private void btnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUltimoActionPerformed
         try {
-        conexao.resultset.last();
+        conexao.resultset.last(); // vai para o último registro
         apresentaDados(); } 
         catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
@@ -1102,7 +1102,7 @@ public class FrmCrud extends javax.swing.JDialog {
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
         try {
-        conexao.resultset.previous();
+        conexao.resultset.previous(); // vai para o registro anterior
         apresentaDados(); } 
         catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
@@ -1112,7 +1112,7 @@ public class FrmCrud extends javax.swing.JDialog {
 
     private void btnProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProximoActionPerformed
         try {
-        conexao.resultset.next();
+        conexao.resultset.next(); // vai para o proximo registro
         apresentaDados(); } 
         catch(SQLException erro) {
             JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
@@ -1121,11 +1121,96 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnProximoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        String sql;
+        try {
+            int option = JOptionPane.showConfirmDialog(rootPane, "Deseja excluir o registro?", "Confirmar exclusão", JOptionPane.YES_NO_OPTION, 3);
+            if (option == 0) {
+                String query = ""; // criei a variavel Query 
+                
+                switch(this.table){
+                case "Cliente":
+                    query = "delete from Cliente where CodCliente = ";
+                    break;
+                
+                case "Fornecedor":
+                    query = "delete from Fornecedor where CodFornecedor = ";
+                    break;
+                    
+                case "Funcionario":
+                    query = "delete from Funcionario where CodFuncionario = ";
+                    break;
+                
+                case "Produto":
+                    query = "delete from Produto where CodProduto = ";
+                    break;
+                    
+                case "Reserva":
+                    query = "delete from Reserva where CodReserva = ";
+                    break;
+                    
+                case "Tipo do Produto":
+                    query = "delete from Tipo_Produto where CodTipoProd = ";
+                    break;
+                    
+                case "Tipo da Reserva":
+                    query = "delete from Tipo_Reserva where CodTipoReserva = ";
+                    break;
+                default:
+            }    
+            
+            sql = query + txtCampo1.getText(); // PK
+            int excluir = conexao.statement.executeUpdate(sql);
+                
+            if (excluir == 1) {
+                JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                conexao.executaSQL("select * from tbclientes order by cod");
+                conexao.resultset.first();
+                    
+                preencheTabela();
+                posicionaRegistro();
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Erro na Exclusão: " + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
+            String query="";
+                switch(this.table){
+                case "Cliente":
+                    query = "delete from Cliente where cod = ";
+                    break;
+                
+                case "Fornecedor":
+                    query = "";
+                    break;
+                    
+                case "Funcionario":
+                    query = "";
+                    break;
+                
+                case "Produto":
+                    query = "";
+                    break;
+                    
+                case "Reserva":
+                    query = "";
+                    break;
+                    
+                case "Tipo do Produto":
+                    query = "";
+                    break;
+                    
+                case "Tipo da Reserva":
+                    query = "";
+                    break;
+                default:
+            } 
             String pesquisa = "select * from Cliente where nome like '" + txtPesquisa.getText() + "%'";
             conexao.executaSQL(pesquisa);
                    
