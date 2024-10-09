@@ -291,17 +291,17 @@ ALTER TABLE `tipo_reserva`
 -- Limitadores para a tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD CONSTRAINT `CodFornecedor` FOREIGN KEY (`CodFornecedor`) REFERENCES `fornecedor` (`CodFornecedor`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CodTipoProduto` FOREIGN KEY (`CodTipoProd`) REFERENCES `tipo_produto` (`CodTipoProd`) ON UPDATE NO ACTION;
+  ADD CONSTRAINT `CodFornecedor` FOREIGN KEY (`CodFornecedor`) REFERENCES `fornecedor` (`CodFornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CodTipoProduto` FOREIGN KEY (`CodTipoProd`) REFERENCES `tipo_produto` (`CodTipoProd`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `reserva`
 --
 ALTER TABLE `reserva`
-  ADD CONSTRAINT `CodCliente` FOREIGN KEY (`CodCliente`) REFERENCES `cliente` (`CodCliente`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CodFuncionario` FOREIGN KEY (`CodFuncionario`) REFERENCES `funcionario` (`CodFuncionario`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `CodProduto` FOREIGN KEY (`CodProduto`) REFERENCES `produto` (`CodProduto`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `TipoReserva` FOREIGN KEY (`CodTipoReserva`) REFERENCES `tipo_reserva` (`CodTipoReserva`) ON UPDATE NO ACTION;
+  ADD CONSTRAINT `CodCliente` FOREIGN KEY (`CodCliente`) REFERENCES `cliente` (`CodCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CodFuncionario` FOREIGN KEY (`CodFuncionario`) REFERENCES `funcionario` (`CodFuncionario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `CodProduto` FOREIGN KEY (`CodProduto`) REFERENCES `produto` (`CodProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `TipoReserva` FOREIGN KEY (`CodTipoReserva`) REFERENCES `tipo_reserva` (`CodTipoReserva`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
