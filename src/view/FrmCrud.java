@@ -1128,34 +1128,34 @@ public class FrmCrud extends javax.swing.JDialog {
                 String query = ""; // criei a variavel Query 
                 
                 switch(this.table){
-                case "Cliente":
-                    query = "delete from Cliente where CodCliente = ";
-                    break;
+                    case "Cliente":
+                        query = "delete from Cliente where CodCliente = ";
+                        break;
+                        
+                    case "Fornecedor":
+                        query = "delete from Fornecedor where CodFornecedor = ";
+                        break;
+                        
+                    case "Funcionario":
+                        query = "delete from Funcionario where CodFuncionario = ";
+                        break;
                 
-                case "Fornecedor":
-                    query = "delete from Fornecedor where CodFornecedor = ";
-                    break;
+                    case "Produto":
+                        query = "delete from Produto where CodProduto = ";
+                        break;
                     
-                case "Funcionario":
-                    query = "delete from Funcionario where CodFuncionario = ";
-                    break;
-                
-                case "Produto":
-                    query = "delete from Produto where CodProduto = ";
-                    break;
+                    case "Reserva":
+                        query = "delete from Reserva where CodReserva = ";
+                        break;
                     
-                case "Reserva":
-                    query = "delete from Reserva where CodReserva = ";
-                    break;
+                    case "Tipo do Produto":
+                        query = "delete from Tipo_Produto where CodTipoProd = ";
+                        break;
                     
-                case "Tipo do Produto":
-                    query = "delete from Tipo_Produto where CodTipoProd = ";
-                    break;
-                    
-                case "Tipo da Reserva":
-                    query = "delete from Tipo_Reserva where CodTipoReserva = ";
-                    break;
-                default:
+                    case "Tipo da Reserva":
+                        query = "delete from Tipo_Reserva where CodTipoReserva = ";
+                        break;
+                    default:
             }    
             
             sql = query + txtCampo1.getText(); // PK
