@@ -1156,20 +1156,50 @@ public class FrmCrud extends javax.swing.JDialog {
                         query = "delete from Tipo_Reserva where CodTipoReserva = ";
                         break;
                     default:
-            }    
+                }  
+                
             
             sql = query + txtCampo1.getText(); // PK
             int excluir = conexao.statement.executeUpdate(sql);
-                
+            
             if (excluir == 1) {
                 JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
-                conexao.executaSQL("select * from tbclientes order by cod");
-                conexao.resultset.first();
+                switch(this.table){
+                    case "Cliente":
+                        conexao.executaSQL("select * from Cliente order by CodCliente");
+                        break; 
+                        
+                    case "Fornecedor":
+                        conexao.executaSQL("select * from Fornecedor order by CodFornecedor");
+                        break;
+                        
+                    case "Funcionario":
+                        conexao.executaSQL("select * from Funcionario order by CodFuncionario");
+                        break;
+                
+                    case "Produto":
+                        conexao.executaSQL("select * from Produto order by CodProduto");
+                        break;
                     
+                    case "Reserva":
+                        conexao.executaSQL("select * from Reserva order by CodReserva");
+                        break;
+                    
+                    case "Tipo do Produto":
+                        conexao.executaSQL("select * from Tipo_Produto order by CodTipoProd");
+                        break;
+                    
+                    case "Tipo da Reserva":
+                        conexao.executaSQL("select * from Tipo_Reserva order by CodTipoReserva");
+                        break;
+                    default:
+                }
+                conexao.resultset.first();
+                
                 preencheTabela();
                 posicionaRegistro();
-                }
-                else {
+                
+                } else {
                     JOptionPane.showMessageDialog(null, "Operação cancelada pelo usuário!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
@@ -1226,7 +1256,125 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-        // TODO add your handling code here:
+        String Nome;     String Telefone;
+        String Endereco; String Descricao;
+        String RG;       String CPF;
+        
+        
+        switch(this.table) {
+            case "Cliente":
+                Nome = txtCampo2.getText();
+                Telefone = txtCampo3.getText();
+                Endereco = txtCampo4.getText();
+                RG = txtCampo5.getText();
+                CPF = txtCampo6.getText();
+            break;
+                
+            case "Fornecedor":
+                Nome = txtCampo2.getText();
+                String CNPJ = txtCampo3.getText();
+                Telefone = txtCampo4.getText();
+                Endereco = txtCampo5.getText();
+            break;
+                    
+            case "Funcionario":
+                Nome = txtCampo2.getText();
+                String Salario = txtCampo3.getText();
+                String Email = txtCampo4.getText();
+                Telefone = txtCampo5.getText();
+                RG = txtCampo6.getText();
+                CPF = txtCampo7.getText();
+                String Usuario = txtCampo8.getText();
+                String Senha = txtCampo9.getText();
+            break;
+                
+            case "Produto":
+                Nome = txtCampo2.getText();
+                String Preco = txtCampo3.getText();
+                String CodTipoProd = txtCampo4.getText();
+                String CodFornecedor = txtCampo5.getText();
+            break;
+                    
+            case "Reserva":
+                String DataInicial = txtCampo2.getText();
+                String DataFinal = txtCampo3.getText();
+                String CodTipoReserva = txtCampo4.getText();
+                String CodCliente = txtCampo5.getText();
+                String CodFuncionario = txtCampo6.getText();
+                String CodProduto = txtCampo7.getText();
+            break;
+                    
+            case "Tipo do Produto":
+                Descricao = txtCampo2.getText();
+            break;
+                    
+            case "Tipo da Reserva":
+                Descricao = txtCampo2.getText();
+            break;
+            default:
+        } 
+        
+        String sql; 
+        String msg = "";
+                
+        try {
+            if(txtCampo1.getText().equals("")) {
+                switch(this.table) {
+                    case "Cliente":
+                        sql = "insert into Cliente (Nome, Telefone, Endereco, RG, CPF) values "
+                                + "('" + txtCampo2 + "','" + txtCampo3 + "','" + txtCampo4 + "','" + txtCampo5 + "','" + txtCampo6 + "')";
+                    break;
+                }
+                msg = "Gravação de um novo registro"; 
+            } 
+            else {
+                switch(this.table) {
+                    case "Cliente":
+                        sql = "update Cliente set Nome='" + txtCampo2 + "', Telefone='" + txtCampo3 + "', Email='" + txtCampo4 + "', RG='" + txtCampo5 + "', CPF='" + txtCampo6 + "' where CodCliente = " + txtCampo1.getText();
+                    break;
+                }
+                msg = "Alteração de registro"; 
+            }
+            conexao.statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            
+            switch(this.table) {
+                case "Cliente":
+                    conexao.executaSQL("select * from Cliente order by CodCliente");
+                break;
+                        
+                case "Fornecedor":
+                    conexao.executaSQL("select * from Fornecedor order by CodFornecedor");
+                break;
+                        
+                case "Funcionario":
+                    conexao.executaSQL("select * from Funcionario order by CodFuncionario");
+                break;
+                
+                case "Produto":
+                    conexao.executaSQL("select * from Produto order by CodProduto");
+                break;
+                    
+                case "Reserva":
+                    conexao.executaSQL("select * from Reserva order by CodReserva");
+                break;
+                    
+                case "Tipo do Produto":
+                    conexao.executaSQL("select * from Tipo_Produto order by CodTipoProd");
+                break;
+                    
+                case "Tipo da Reserva":
+                    conexao.executaSQL("select * from Tipo_Reserva order by CodTipoReserva");
+                break;
+                
+                default:    
+            }              
+            
+            preencheTabela();
+        } catch (SQLException errosql) {
+            JOptionPane.showMessageDialog(null, "\n Erro na Gravação: \n " 
+                + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
