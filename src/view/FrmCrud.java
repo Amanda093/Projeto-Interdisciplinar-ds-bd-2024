@@ -1210,43 +1210,41 @@ public class FrmCrud extends javax.swing.JDialog {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         try {
-            String query="";
-                switch(this.table){
+            String pesquisa="";
+            
+            switch(this.table){
                 case "Cliente":
-                    query = "delete from Cliente where cod = ";
+                    pesquisa = "select * from Cliente where Nome like '" + txtPesquisa.getText() + "%'";
                     break;
                 
                 case "Fornecedor":
-                    query = "";
+                    pesquisa = "select * from Fornecedor where Nome like '" + txtPesquisa.getText() + "%'";
                     break;
                     
                 case "Funcionario":
-                    query = "";
+                    pesquisa = "select * from Fornecedor where Nome like '" + txtPesquisa.getText() + "%'";
                     break;
                 
                 case "Produto":
-                    query = "";
+                    pesquisa = "select * from Produto where Nome like '" + txtPesquisa.getText() + "%'";
                     break;
                     
                 case "Reserva":
-                    query = "";
+                    pesquisa = "select * from Reserva where CodReserva like '" + txtPesquisa.getText() + "%'";
                     break;
                     
                 case "Tipo do Produto":
-                    query = "";
+                    pesquisa = "select * from Tipo_Produto where CodTipoProd like '" + txtPesquisa.getText() + "%'";
                     break;
                     
                 case "Tipo da Reserva":
-                    query = "";
+                    pesquisa = "select * from Tipo_Reserva where CodTipoReserva like '" + txtPesquisa.getText() + "%'";
                     break;
                 default:
             } 
-            String pesquisa = "select * from Cliente where nome like '" + txtPesquisa.getText() + "%'";
             conexao.executaSQL(pesquisa);
                    
-            if(conexao.resultset.first()) {
-                preencheTabela();
-            }
+            if(conexao.resultset.first()) { preencheTabela();}
             else {
                 JOptionPane.showMessageDialog(null, "\n Não existe dados com este paramêtro!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);                       
             }
@@ -1313,12 +1311,13 @@ public class FrmCrud extends javax.swing.JDialog {
             break;
             default:
         } 
-        
-        String sql; 
-        String msg = "";
-                
+             
         try {
+            String sql=""; 
+            String msg="";
+            
             if(txtCampo1.getText().equals("")) {
+                
                 switch(this.table) {
                     case "Cliente":
                         sql = "insert into Cliente (Nome, Telefone, Endereco, RG, CPF) values "
