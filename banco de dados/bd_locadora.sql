@@ -188,24 +188,19 @@ INSERT INTO `tipo_reserva` (`CodTipoReserva`, `Descricao`) VALUES
 -- Índices para tabela `cliente`
 --
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`CodCliente`),
-  ADD UNIQUE KEY `RG` (`RG`),
-  ADD UNIQUE KEY `CPF` (`CPF`);
+  ADD PRIMARY KEY (`CodCliente`);
 
 --
 -- Índices para tabela `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  ADD PRIMARY KEY (`CodFornecedor`),
-  ADD UNIQUE KEY `CNPJ` (`CNPJ`);
+  ADD PRIMARY KEY (`CodFornecedor`);
 
 --
 -- Índices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  ADD PRIMARY KEY (`CodFuncionario`),
-  ADD UNIQUE KEY `RG` (`RG`),
-  ADD UNIQUE KEY `CPF` (`CPF`);
+  ADD PRIMARY KEY (`CodFuncionario`);
 
 --
 -- Índices para tabela `produto`

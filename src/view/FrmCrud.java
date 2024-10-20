@@ -1254,86 +1254,59 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-        String Nome;     String Telefone;
-        String Endereco; String Descricao;
-        String RG;       String CPF;
-        
-        
-        switch(this.table) {
-            case "Cliente":
-                Nome = txtCampo2.getText();
-                Telefone = txtCampo3.getText();
-                Endereco = txtCampo4.getText();
-                RG = txtCampo5.getText();
-                CPF = txtCampo6.getText();
-            break;
-                
-            case "Fornecedor":
-                Nome = txtCampo2.getText();
-                String CNPJ = txtCampo3.getText();
-                Telefone = txtCampo4.getText();
-                Endereco = txtCampo5.getText();
-            break;
-                    
-            case "Funcionario":
-                Nome = txtCampo2.getText();
-                String Salario = txtCampo3.getText();
-                String Email = txtCampo4.getText();
-                Telefone = txtCampo5.getText();
-                RG = txtCampo6.getText();
-                CPF = txtCampo7.getText();
-                String Usuario = txtCampo8.getText();
-                String Senha = txtCampo9.getText();
-            break;
-                
-            case "Produto":
-                Nome = txtCampo2.getText();
-                String Preco = txtCampo3.getText();
-                String CodTipoProd = txtCampo4.getText();
-                String CodFornecedor = txtCampo5.getText();
-            break;
-                    
-            case "Reserva":
-                String DataInicial = txtCampo2.getText();
-                String DataFinal = txtCampo3.getText();
-                String CodTipoReserva = txtCampo4.getText();
-                String CodCliente = txtCampo5.getText();
-                String CodFuncionario = txtCampo6.getText();
-                String CodProduto = txtCampo7.getText();
-            break;
-                    
-            case "Tipo do Produto":
-                Descricao = txtCampo2.getText();
-            break;
-                    
-            case "Tipo da Reserva":
-                Descricao = txtCampo2.getText();
-            break;
-            default:
-        } 
+        String Campo1 = txtCampo1.getText();
+        String Campo2 = txtCampo2.getText(); 
+        String Campo3 = txtCampo3.getText(); 
+        String Campo4 = txtCampo4.getText(); 
+        String Campo5 = txtCampo5.getText(); 
+        String Campo6 = txtCampo6.getText(); 
+        String Campo7 = txtCampo7.getText(); 
+        String Campo8 = txtCampo8.getText(); 
+        String Campo9 = txtCampo9.getText(); 
              
         try {
             String sql=""; 
             String msg="";
             
-            if(txtCampo1.getText().equals("")) {
-                
-                switch(this.table) {
-                    case "Cliente":
-                        sql = "insert into Cliente (Nome, Telefone, Endereco, RG, CPF) values "
-                                + "('" + txtCampo2 + "','" + txtCampo3 + "','" + txtCampo4 + "','" + txtCampo5 + "','" + txtCampo6 + "')";
+            switch(this.table){
+                case "Cliente":
+                        sql = "insert into cliente (Nome, Telefone, Endereco, RG, CPF) values "
+                                + "('" + Campo2 + "','" + Campo3 + "','" + Campo4 + "','" + Campo5 + "','" + Campo6 + "')";
+                        msg = "Gravação de um novo registro"; 
                     break;
-                }
-                msg = "Gravação de um novo registro"; 
+                case "Fornecedor":
+                        sql = "insert into fornecedor (Nome, CNPJ, Telefone, Endereco) values "
+                                + "('" + Campo2 + "','" + Campo3 + "','" + Campo4 + "','" + Campo5 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                case "Funcionario":
+                        sql = "insert into funcionario (Nome, Salario, Email, Telefone, RG, CPF, Usuario, Senha) values "
+                                + "('" + Campo2 + "','" + Campo3 + "','" + Campo4 + "','" + Campo5 + "','" + Campo6 + "','" + Campo7 + "','" + Campo8 + "','" + Campo9 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                case "Produto":
+                        sql = "insert into produto (Nome, Preco, CodTipoProd, CodFornecedor) values "
+                                + "('" + Campo2 + "','" + Campo3 + "','" + Campo4 + "','" + Campo5 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                case "Reserva":
+                        sql = "insert into reserva (DataInicial, DataFinal, CodTipoReserva, CodCliente, CodFuncionario, CodProduto) values "
+                                + "('" + Campo2 + "','" + Campo3 + "','" + Campo4 + "','" + Campo5 + "','" + Campo6 + "','" + Campo7 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                case "Tipo do Produto":
+                        sql = "insert into tipo_produto (Descricao) values "
+                                + "('" + Campo3 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                case "Tipo da Reserva":
+                        sql = "insert into tipo_reserva (Descricao) values "
+                                + "('" + Campo3 + "')";
+                        msg = "Gravação de um novo registro"; 
+                    break;
+                default:
             } 
-            else {
-                switch(this.table) {
-                    case "Cliente":
-                        sql = "update Cliente set Nome='" + txtCampo2 + "', Telefone='" + txtCampo3 + "', Email='" + txtCampo4 + "', RG='" + txtCampo5 + "', CPF='" + txtCampo6 + "' where CodCliente = " + txtCampo1.getText();
-                    break;
-                }
-                msg = "Alteração de registro"; 
-            }
+            
             conexao.statement.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
             
@@ -1377,7 +1350,95 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        String Campo1 = txtCampo1.getText();
+        String Campo2 = txtCampo2.getText(); 
+        String Campo3 = txtCampo3.getText(); 
+        String Campo4 = txtCampo4.getText(); 
+        String Campo5 = txtCampo5.getText(); 
+        String Campo6 = txtCampo6.getText(); 
+        String Campo7 = txtCampo7.getText(); 
+        String Campo8 = txtCampo8.getText(); 
+        String Campo9 = txtCampo9.getText(); 
+             
+        try {
+            String sql=""; 
+            String msg="";
+            
+            switch(this.table){
+                case "Cliente":
+                        sql = "update Cliente set Nome='" + Campo2 + "', Telefone='" + Campo3 + "', Endereco='" + Campo4 + "', RG='" + Campo5 + "', CPF='" + Campo6 + "' where CodCliente = " + Campo1;
+                        msg = "Alteração de registro"; 
+                    break;
+                case "Fornecedor":
+                        sql = "update fornecedor set Nome='" + Campo2 + "', CNPJ='" + Campo3 + "', Telefone='" + Campo4 + "', Endereco='" + Campo5 + "' where CodFornecedor = " + Campo1;
+                        msg = "Alteração de registro"; 
+                    break;
+                    
+                case "Funcionario":
+                        sql = "update funcionario set Nome='" + Campo2 + "', Salario='" + Campo3 + "', Email='" + Campo4 + "', Telefone='" + Campo5 + "', RG='" + Campo6 + "', CPF='" + Campo7 + "', Usuario='" + Campo8 + "', Senha='" + Campo9 + "' where CodFuncionario = " + Campo1;
+                        msg = "Alteração de registro"; 
+                    break;
+                
+                case "Produto":
+                        sql = "update produto set Nome='" + Campo2 + "', Preco='" + Campo3 + "', CodTipoProd='" + Campo4 + "', CodFornecedor='" + Campo5 + "' where CodProduto = " + Campo1;
+                        msg = "Alteração de registro"; 
+                    break;
+                    
+                case "Reserva":
+                        sql = "update reserva set DataInicial='" + Campo2 + "', DataFinal='" + Campo3 + "', CodTipoReserva='" + Campo4 + "', CodCliente='" + Campo5 + "', CodFuncionario='" + Campo6 + "', CodProduto='" + Campo7 + "' where CodReserva = " + Campo1;
+                        msg = "Alteração de registro"; 
+                    break;
+                case "Tipo do Produto":
+                        sql = "update tipo_produto set Descricao='" + Campo3 + "' where CodTipoProd = " + Campo2;
+                        msg = "Alteração de registro"; 
+                    break;
+                case "Tipo da Reserva":
+                        sql = "update tipo_reserva set Descricao='" + Campo3 + "' where CodTipoReserva = " + Campo2;
+                        msg = "Alteração de registro"; 
+                    break;
+                default:
+            } 
+            
+            conexao.statement.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Alteração realizada com sucesso!", "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+            
+            switch(this.table) {
+                case "Cliente":
+                    conexao.executaSQL("select * from Cliente order by CodCliente");
+                break;
+                        
+                case "Fornecedor":
+                    conexao.executaSQL("select * from Fornecedor order by CodFornecedor");
+                break;
+                        
+                case "Funcionario":
+                    conexao.executaSQL("select * from Funcionario order by CodFuncionario");
+                break;
+                
+                case "Produto":
+                    conexao.executaSQL("select * from Produto order by CodProduto");
+                break;
+                    
+                case "Reserva":
+                    conexao.executaSQL("select * from Reserva order by CodReserva");
+                break;
+                    
+                case "Tipo do Produto":
+                    conexao.executaSQL("select * from Tipo_Produto order by CodTipoProd");
+                break;
+                    
+                case "Tipo da Reserva":
+                    conexao.executaSQL("select * from Tipo_Reserva order by CodTipoReserva");
+                break;
+                
+                default:    
+            }              
+            
+            preencheTabela();
+        } catch (SQLException errosql) {
+            JOptionPane.showMessageDialog(null, "\n Erro na Alteração: \n " 
+                + errosql, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
