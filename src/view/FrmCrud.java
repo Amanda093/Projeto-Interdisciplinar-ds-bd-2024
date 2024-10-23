@@ -1253,7 +1253,6 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-<<<<<<< HEAD
         String Nome;     String Telefone;
         String Endereco; String Descricao;
         String RG;       String CPF;
@@ -1310,7 +1309,7 @@ public class FrmCrud extends javax.swing.JDialog {
             break;
             default:
         } 
-=======
+
         String Campo1 = txtCampo1.getText();
         String Campo2 = txtCampo2.getText(); 
         String Campo3 = txtCampo3.getText(); 
@@ -1320,7 +1319,6 @@ public class FrmCrud extends javax.swing.JDialog {
         String Campo7 = txtCampo7.getText(); 
         String Campo8 = txtCampo8.getText(); 
         String Campo9 = txtCampo9.getText(); 
->>>>>>> 46e73b5384c510e52a512e37b14350e1e089edd2
              
         try {
             String sql=""; 
