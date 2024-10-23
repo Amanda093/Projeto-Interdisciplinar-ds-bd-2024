@@ -122,7 +122,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="33" red="33" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Usuario"/>
+        <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
         <Property name="name" type="java.lang.String" value="lblUsuario" noResource="true"/>
       </Properties>
     </Component>

@@ -447,13 +447,13 @@ public class FrmCrud extends javax.swing.JDialog {
                     break;
                     
                 case "Tipo do Produto":
-                    txtCampo1.setText(conexao.resultset.getString("CodTipoProd"));
-                    txtCampo2.setText(conexao.resultset.getString("Descricao"));
+                    txtCampo2.setText(conexao.resultset.getString("CodTipoProd"));
+                    txtCampo3.setText(conexao.resultset.getString("Descricao"));
                     break;
                     
                 case "Tipo da Reserva":
-                    txtCampo1.setText(conexao.resultset.getString("CodTipoReserva"));
-                    txtCampo2.setText(conexao.resultset.getString("Descricao"));
+                    txtCampo2.setText(conexao.resultset.getString("CodTipoReserva"));
+                    txtCampo3.setText(conexao.resultset.getString("Descricao"));
                     break;
                 default:
             } 
@@ -878,7 +878,7 @@ public class FrmCrud extends javax.swing.JDialog {
         scrScrollcrud.setViewportView(tblCrud);
 
         btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnNovo.setText("Novo Registro");
+        btnNovo.setText("Limpar");
         btnNovo.setName("btnRegistro"); // NOI18N
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -900,8 +900,8 @@ public class FrmCrud extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(116, 116, 116)
-                .addComponent(btnNovo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1129,37 +1129,36 @@ public class FrmCrud extends javax.swing.JDialog {
                 
                 switch(this.table){
                     case "Cliente":
-                        query = "delete from Cliente where CodCliente = ";
+                        query = "delete from Cliente where CodCliente = " + txtCampo1.getText();
                         break;
                         
                     case "Fornecedor":
-                        query = "delete from Fornecedor where CodFornecedor = ";
+                        query = "delete from Fornecedor where CodFornecedor = " + txtCampo1.getText();
                         break;
                         
                     case "Funcionario":
-                        query = "delete from Funcionario where CodFuncionario = ";
+                        query = "delete from Funcionario where CodFuncionario = " + txtCampo1.getText();
                         break;
                 
                     case "Produto":
-                        query = "delete from Produto where CodProduto = ";
+                        query = "delete from Produto where CodProduto = " + txtCampo1.getText();
                         break;
                     
                     case "Reserva":
-                        query = "delete from Reserva where CodReserva = ";
+                        query = "delete from Reserva where CodReserva = " + txtCampo1.getText();
                         break;
                     
                     case "Tipo do Produto":
-                        query = "delete from Tipo_Produto where CodTipoProd = ";
+                        query = "delete from Tipo_Produto where CodTipoProd = " + txtCampo2.getText();
                         break;
                     
                     case "Tipo da Reserva":
-                        query = "delete from Tipo_Reserva where CodTipoReserva = ";
+                        query = "delete from Tipo_Reserva where CodTipoReserva = " + txtCampo2.getText();
                         break;
                     default:
                 }  
-                
-            
-            sql = query + txtCampo1.getText(); // PK
+
+            sql = query;
             int excluir = conexao.statement.executeUpdate(sql);
             
             if (excluir == 1) {
@@ -1257,7 +1256,6 @@ public class FrmCrud extends javax.swing.JDialog {
         String Nome;     String Telefone;
         String Endereco; String Descricao;
         String RG;       String CPF;
-        
         
         switch(this.table) {
             case "Cliente":
