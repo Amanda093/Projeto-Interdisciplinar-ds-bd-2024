@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.*;
 
@@ -170,9 +173,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         menMenu.setName("mnbTabela"); // NOI18N
 
+        menCliente.setForeground(new java.awt.Color(51, 51, 51));
         menCliente.setText("Pessoas");
         menCliente.setName("menCliente"); // NOI18N
 
+        iteCliente.setForeground(new java.awt.Color(51, 51, 51));
         iteCliente.setText("Cliente");
         iteCliente.setName("Cliente"); // NOI18N
         iteCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +187,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         menCliente.add(iteCliente);
 
+        iteFuncionario.setForeground(new java.awt.Color(51, 51, 51));
         iteFuncionario.setText("Funcionario");
         iteFuncionario.setName("Funcionario"); // NOI18N
         iteFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +197,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         menCliente.add(iteFuncionario);
 
+        iteFornecedor.setForeground(new java.awt.Color(51, 51, 51));
         iteFornecedor.setText("Fornecedor");
         iteFornecedor.setName("Fornecedor"); // NOI18N
         iteFornecedor.addActionListener(new java.awt.event.ActionListener() {
@@ -202,9 +209,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         menMenu.add(menCliente);
 
+        menProduto.setForeground(new java.awt.Color(51, 51, 51));
         menProduto.setText("Produto");
         menProduto.setName("menProduto"); // NOI18N
 
+        iteProduto.setForeground(new java.awt.Color(51, 51, 51));
         iteProduto.setText("Produto");
         iteProduto.setName("Produto"); // NOI18N
         iteProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -214,6 +223,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         menProduto.add(iteProduto);
 
+        iteTipoproduto.setForeground(new java.awt.Color(51, 51, 51));
         iteTipoproduto.setText("Tipo Produto");
         iteTipoproduto.setName("Tipo Produto"); // NOI18N
         iteTipoproduto.addActionListener(new java.awt.event.ActionListener() {
@@ -225,9 +235,11 @@ public class FrmMain extends javax.swing.JFrame {
 
         menMenu.add(menProduto);
 
+        menReserva.setForeground(new java.awt.Color(51, 51, 51));
         menReserva.setText("Reserva");
         menReserva.setName("menReserva"); // NOI18N
 
+        iteReserva.setForeground(new java.awt.Color(51, 51, 51));
         iteReserva.setText("Reserva");
         iteReserva.setName("Reserva"); // NOI18N
         iteReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +249,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         menReserva.add(iteReserva);
 
+        iteTiporeserva.setForeground(new java.awt.Color(51, 51, 51));
         iteTiporeserva.setText("Tipo Reserva");
         iteTiporeserva.setName("Tipo Reserva"); // NOI18N
         iteTiporeserva.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +261,7 @@ public class FrmMain extends javax.swing.JFrame {
 
         menMenu.add(menReserva);
 
+        menSobre.setForeground(new java.awt.Color(51, 51, 51));
         menSobre.setText("Sobre");
         menSobre.setName("menSobre"); // NOI18N
         menSobre.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,6 +276,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
         menMenu.add(menSobre);
 
+        menSair.setForeground(new java.awt.Color(51, 51, 51));
         menSair.setText("Sair");
         menSair.setName("menSair"); // NOI18N
         menSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -302,43 +317,83 @@ public class FrmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void iteClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteClienteActionPerformed
-        abrirCRUD("Cliente");
+        try {
+            abrirCRUD("Cliente");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteClienteActionPerformed
 
     private void iteFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteFornecedorActionPerformed
-        abrirCRUD("Fornecedor");
+        try {
+            abrirCRUD("Fornecedor");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteFornecedorActionPerformed
 
     private void iteFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteFuncionarioActionPerformed
-        abrirCRUD("Funcionario");
+        try {
+            abrirCRUD("Funcionario");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteFuncionarioActionPerformed
 
     private void iteProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteProdutoActionPerformed
-        abrirCRUD("Produto");
+        try {
+            abrirCRUD("Produto");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteProdutoActionPerformed
 
     private void iteTipoprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteTipoprodutoActionPerformed
-        abrirCRUD("Tipo do Produto");
+        try {
+            abrirCRUD("Tipo do Produto");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteTipoprodutoActionPerformed
 
     private void iteReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteReservaActionPerformed
-        abrirCRUD("Reserva");
+        try {
+            abrirCRUD("Reserva");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteReservaActionPerformed
 
     private void iteTiporeservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iteTiporeservaActionPerformed
-        abrirCRUD("Tipo da Reserva");
+        try {
+            abrirCRUD("Tipo da Reserva");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_iteTiporeservaActionPerformed
 
     private void jtbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbClienteActionPerformed
-        abrirCRUD("Cliente");
+        try {
+            abrirCRUD("Cliente");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jtbClienteActionPerformed
 
     private void jtbProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbProdutoActionPerformed
-        abrirCRUD("Produto");
+        try {
+            abrirCRUD("Produto");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jtbProdutoActionPerformed
 
     private void jtbReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbReservaActionPerformed
-        abrirCRUD("Reserva");
+        try {
+            abrirCRUD("Reserva");
+        } catch (ParseException ex) {
+            Logger.getLogger(FrmMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jtbReservaActionPerformed
 
     private void jtbSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbSobreActionPerformed
@@ -376,7 +431,7 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_menSobreMouseClicked
 
 
-    public void abrirCRUD(String table){
+    public void abrirCRUD(String table) throws ParseException{
         new FrmCrud(table).setVisible(true);
     }
 

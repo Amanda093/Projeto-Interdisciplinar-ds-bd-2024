@@ -11,9 +11,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.ParseException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 import model.Conexao;
 
 /**
@@ -26,7 +28,7 @@ public class FrmCrud extends javax.swing.JDialog {
     /**
      * Creates new form FrmCrud
      */
-    public FrmCrud(String table) {
+    public FrmCrud(String table) throws ParseException {
         conexao = new Conexao();
         conexao.conecta();
         this.table = table;
@@ -35,6 +37,20 @@ public class FrmCrud extends javax.swing.JDialog {
         setIconImage(icone.getImage());
         setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         initComponents();
+        MaskFormatter maskInteger = new MaskFormatter("##########");
+        MaskFormatter maskTelefone = new MaskFormatter("#####-####");
+        maskTelefone.setPlaceholderCharacter('0');
+        MaskFormatter maskRG = new MaskFormatter("##.###.###-#");
+        maskRG.setPlaceholderCharacter('0');
+        MaskFormatter maskCPF = new MaskFormatter("###.###.###-##");
+        maskCPF.setPlaceholderCharacter('0');
+        MaskFormatter maskCNPJ = new MaskFormatter("##.###.###/####-##");
+        maskCNPJ.setPlaceholderCharacter('0');
+        MaskFormatter maskDate = new MaskFormatter("####-##-##");
+        maskDate.setPlaceholderCharacter('_');
+        
+        maskInteger.install(txtCampo1); 
+                
          try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -71,6 +87,11 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo9);
                 getContentPane().remove(txtCampo8);
                 getContentPane().remove(txtCampo7);
+                
+                
+                maskTelefone.install(txtCampo3);
+                maskRG.install(txtCampo5);
+                maskCPF.install(txtCampo6);
                 
                 lblCampo1.setText("CodCliente:");
                 lblCampo2.setText("Nome:");
@@ -110,6 +131,9 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo7);
                 getContentPane().remove(txtCampo6);
                 
+                maskCNPJ.install(txtCampo3);
+                maskTelefone.install(txtCampo4);
+                
                 lblCampo1.setText("CodFornecedor:");
                 lblCampo2.setText("Nome:");
                 lblCampo3.setText("CNPJ:");
@@ -138,6 +162,13 @@ public class FrmCrud extends javax.swing.JDialog {
             
             // ===== Tabela FUNCIONARIO =====
             case "Funcionario":
+                
+                maskInteger.install(txtCampo3);
+                maskTelefone.install(txtCampo5);
+                maskRG.install(txtCampo6);
+                maskCPF.install(txtCampo7);
+                maskInteger.install(txtCampo9);
+                
                 lblCampo1.setText("CodFuncionario:");
                 lblCampo2.setText("Nome:");
                 lblCampo3.setText("Salario:");
@@ -147,6 +178,7 @@ public class FrmCrud extends javax.swing.JDialog {
                 lblCampo7.setText("CPF:");
                 lblCampo8.setText("Usuario:");
                 lblCampo9.setText("Senha:");
+                
                 tblCrud.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [] [] {
                     {null, null, null, null, null, null, null, null, null},
@@ -186,6 +218,10 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo8);
                 getContentPane().remove(txtCampo7);
                 getContentPane().remove(txtCampo6);
+                
+                maskInteger.install(txtCampo3);
+                maskInteger.install(txtCampo4);
+                maskInteger.install(txtCampo5);
                 
                 lblCampo1.setText("CodProduto:");
                 lblCampo2.setText("Nome:");
@@ -231,6 +267,13 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(lblCampo8);
                 getContentPane().remove(txtCampo9);
                 getContentPane().remove(txtCampo8);
+                
+                maskDate.install(txtCampo2);
+                maskDate.install(txtCampo3);
+                maskInteger.install(txtCampo4);
+                maskInteger.install(txtCampo5);
+                maskInteger.install(txtCampo6);
+                maskInteger.install(txtCampo7);
                 
                 lblCampo1.setText("CodReserva:");
                 lblCampo2.setText("DataInicial:");
@@ -287,6 +330,8 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo4);
                 getContentPane().remove(txtCampo1);
                 
+                maskInteger.install(txtCampo2);
+                
                 lblCampo2.setText("CodTipoProd:");
                 lblCampo3.setText("Descricao:");
                 tblCrud.setModel(new javax.swing.table.DefaultTableModel(
@@ -341,6 +386,8 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo5);
                 getContentPane().remove(txtCampo4);
                 getContentPane().remove(txtCampo1);
+                
+                maskInteger.install(txtCampo2);
                 
                 lblCampo2.setText("CodTipoReserva:");
                 lblCampo3.setText("Descricao:");
@@ -634,24 +681,15 @@ public class FrmCrud extends javax.swing.JDialog {
 
         lblTitulo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
-        txtCampo1 = new javax.swing.JTextField();
         lblCampo1 = new javax.swing.JLabel();
-        txtCampo2 = new javax.swing.JTextField();
         lblCampo2 = new javax.swing.JLabel();
         lblCampo3 = new javax.swing.JLabel();
-        txtCampo3 = new javax.swing.JTextField();
         lblCampo4 = new javax.swing.JLabel();
         lblCampo5 = new javax.swing.JLabel();
-        txtCampo5 = new javax.swing.JTextField();
-        txtCampo4 = new javax.swing.JTextField();
         lblCampo6 = new javax.swing.JLabel();
         lblCampo8 = new javax.swing.JLabel();
         lblCampo7 = new javax.swing.JLabel();
         lblCampo9 = new javax.swing.JLabel();
-        txtCampo7 = new javax.swing.JTextField();
-        txtCampo9 = new javax.swing.JTextField();
-        txtCampo8 = new javax.swing.JTextField();
-        txtCampo6 = new javax.swing.JTextField();
         btnPrimeiro = new javax.swing.JButton();
         btnUltimo = new javax.swing.JButton();
         btnAnterior = new javax.swing.JButton();
@@ -664,6 +702,15 @@ public class FrmCrud extends javax.swing.JDialog {
         tblCrud = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         txtPesquisa = new javax.swing.JTextField();
+        txtCampo1 = new javax.swing.JFormattedTextField();
+        txtCampo2 = new javax.swing.JFormattedTextField();
+        txtCampo3 = new javax.swing.JFormattedTextField();
+        txtCampo4 = new javax.swing.JFormattedTextField();
+        txtCampo5 = new javax.swing.JFormattedTextField();
+        txtCampo6 = new javax.swing.JFormattedTextField();
+        txtCampo7 = new javax.swing.JFormattedTextField();
+        txtCampo8 = new javax.swing.JFormattedTextField();
+        txtCampo9 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -671,129 +718,71 @@ public class FrmCrud extends javax.swing.JDialog {
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 74, 87));
         lblTitulo.setText("Crud");
+        lblTitulo.setFocusable(false);
         lblTitulo.setName("lblTitulo"); // NOI18N
 
         btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(51, 51, 51));
         btnVoltar.setText("Voltar");
         btnVoltar.setToolTipText("Voltar para a pagina inicial");
         btnVoltar.setName("btnVoltar"); // NOI18N
+        btnVoltar.setNextFocusableComponent(btnPesquisar);
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
 
-        txtCampo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo1.setName("txtCampo1"); // NOI18N
-        txtCampo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo1ActionPerformed(evt);
-            }
-        });
-
         lblCampo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo1.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo1.setText("Código:");
         lblCampo1.setName("lblCampo1"); // NOI18N
 
-        txtCampo2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo2.setName("txtCampo2"); // NOI18N
-        txtCampo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo2ActionPerformed(evt);
-            }
-        });
-
         lblCampo2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo2.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo2.setText("Campo 2:");
         lblCampo2.setName("lblCampo2"); // NOI18N
 
         lblCampo3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo3.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo3.setText("Campo 3:");
         lblCampo3.setName("lblCampo3"); // NOI18N
 
-        txtCampo3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo3.setName("txtCampo3"); // NOI18N
-        txtCampo3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo3ActionPerformed(evt);
-            }
-        });
-
         lblCampo4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo4.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo4.setText("Campo 4:");
         lblCampo4.setName("lblCampo4"); // NOI18N
 
         lblCampo5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo5.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo5.setText("Campo 5:");
         lblCampo5.setName("lblCampo5"); // NOI18N
 
-        txtCampo5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo5.setName("txtCampo5"); // NOI18N
-        txtCampo5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo5ActionPerformed(evt);
-            }
-        });
-
-        txtCampo4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo4.setName("txtCampo4"); // NOI18N
-        txtCampo4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo4ActionPerformed(evt);
-            }
-        });
-
         lblCampo6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo6.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo6.setText("Campo 6:");
         lblCampo6.setName("lblCampo6"); // NOI18N
 
         lblCampo8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo8.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo8.setText("Campo 8:");
         lblCampo8.setName("lblCampo8"); // NOI18N
 
         lblCampo7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo7.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo7.setText("Campo 7:");
         lblCampo7.setName("lblCampo7"); // NOI18N
 
         lblCampo9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblCampo9.setForeground(new java.awt.Color(51, 51, 51));
         lblCampo9.setText("Campo 9:");
         lblCampo9.setName("lblCampo9"); // NOI18N
 
-        txtCampo7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo7.setName("txtCampo7"); // NOI18N
-        txtCampo7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo7ActionPerformed(evt);
-            }
-        });
-
-        txtCampo9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo9.setName("txtCampo9"); // NOI18N
-        txtCampo9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo9ActionPerformed(evt);
-            }
-        });
-
-        txtCampo8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo8.setName("txtCampo8"); // NOI18N
-        txtCampo8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo8ActionPerformed(evt);
-            }
-        });
-
-        txtCampo6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCampo6.setName("txtCampo6"); // NOI18N
-        txtCampo6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCampo6ActionPerformed(evt);
-            }
-        });
-
         btnPrimeiro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPrimeiro.setForeground(new java.awt.Color(51, 51, 51));
         btnPrimeiro.setText("Primeiro");
         btnPrimeiro.setName("btnPrimeiro"); // NOI18N
+        btnPrimeiro.setNextFocusableComponent(btnAnterior);
         btnPrimeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrimeiroActionPerformed(evt);
@@ -801,8 +790,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnUltimo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUltimo.setForeground(new java.awt.Color(51, 51, 51));
         btnUltimo.setText("Último");
         btnUltimo.setName("btnUltimo"); // NOI18N
+        btnUltimo.setNextFocusableComponent(txtCampo1);
         btnUltimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUltimoActionPerformed(evt);
@@ -810,8 +801,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnAnterior.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAnterior.setForeground(new java.awt.Color(51, 51, 51));
         btnAnterior.setText("Anterior");
         btnAnterior.setName("btnAnterior"); // NOI18N
+        btnAnterior.setNextFocusableComponent(btnProximo);
         btnAnterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnteriorActionPerformed(evt);
@@ -819,8 +812,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnProximo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnProximo.setForeground(new java.awt.Color(51, 51, 51));
         btnProximo.setText("Próximo");
         btnProximo.setName("btnProximo"); // NOI18N
+        btnProximo.setNextFocusableComponent(btnUltimo);
         btnProximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProximoActionPerformed(evt);
@@ -828,8 +823,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExcluir.setForeground(new java.awt.Color(51, 51, 51));
         btnExcluir.setText("Excluir");
         btnExcluir.setName("btnExcluir"); // NOI18N
+        btnExcluir.setNextFocusableComponent(btnNovo);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -837,8 +834,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnPesquisar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPesquisar.setForeground(new java.awt.Color(51, 51, 51));
         btnPesquisar.setText("Pesquisar");
         btnPesquisar.setName("btnPesquisar"); // NOI18N
+        btnPesquisar.setNextFocusableComponent(txtPesquisa);
         btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPesquisarActionPerformed(evt);
@@ -846,8 +845,10 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnGravar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGravar.setForeground(new java.awt.Color(51, 51, 51));
         btnGravar.setText("Gravar");
         btnGravar.setName("btnGravar"); // NOI18N
+        btnGravar.setNextFocusableComponent(btnAlterar);
         btnGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGravarActionPerformed(evt);
@@ -855,14 +856,19 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAlterar.setForeground(new java.awt.Color(51, 51, 51));
         btnAlterar.setText("Alterar");
         btnAlterar.setName("btnAlterar"); // NOI18N
+        btnAlterar.setNextFocusableComponent(btnExcluir);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
             }
         });
 
+        scrScrollcrud.setForeground(new java.awt.Color(51, 51, 51));
+
+        tblCrud.setForeground(new java.awt.Color(51, 51, 51));
         tblCrud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -878,8 +884,10 @@ public class FrmCrud extends javax.swing.JDialog {
         scrScrollcrud.setViewportView(tblCrud);
 
         btnNovo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnNovo.setForeground(new java.awt.Color(51, 51, 51));
         btnNovo.setText("Limpar");
         btnNovo.setName("btnRegistro"); // NOI18N
+        btnNovo.setNextFocusableComponent(btnVoltar);
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNovoActionPerformed(evt);
@@ -887,61 +895,86 @@ public class FrmCrud extends javax.swing.JDialog {
         });
 
         txtPesquisa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPesquisa.setForeground(new java.awt.Color(51, 51, 51));
         txtPesquisa.setName("txtPesquisar"); // NOI18N
+        txtPesquisa.setNextFocusableComponent(btnPrimeiro);
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPesquisaActionPerformed(evt);
             }
         });
 
+        txtCampo1.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo1.setName("txtCampo1"); // NOI18N
+        txtCampo1.setNextFocusableComponent(txtCampo2);
+        txtCampo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampo1ActionPerformed(evt);
+            }
+        });
+
+        txtCampo2.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo2.setName("txtCampo2"); // NOI18N
+
+        txtCampo3.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo3.setName("txtCampo3"); // NOI18N
+        txtCampo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampo3ActionPerformed(evt);
+            }
+        });
+
+        txtCampo4.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo4.setName("txtCampo4"); // NOI18N
+
+        txtCampo5.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo5.setName("txtCampo5"); // NOI18N
+
+        txtCampo6.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo6.setName("txtCampo6"); // NOI18N
+
+        txtCampo7.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo7.setName("txtCampo7"); // NOI18N
+
+        txtCampo8.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo8.setName("txtCampo8"); // NOI18N
+
+        txtCampo9.setForeground(new java.awt.Color(51, 51, 51));
+        txtCampo9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCampo9.setName("txtCampo9"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCampo6)
-                            .addComponent(txtCampo6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCampo8)
-                            .addComponent(txtCampo8, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lblCampo8))
+                        .addGap(0, 607, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrScrollcrud, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrScrollcrud)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCampo2)
                                     .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCampo3)
                                     .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCampo4)
-                                    .addComponent(txtCampo4, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCampo5)
-                                    .addComponent(txtCampo5, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCampo7)
-                                    .addComponent(txtCampo7, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCampo9)
-                                    .addComponent(txtCampo9, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnPrimeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -951,18 +984,46 @@ public class FrmCrud extends javax.swing.JDialog {
                                 .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCampo1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 294, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
                                 .addComponent(btnPesquisar)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtPesquisa)))
+                                .addComponent(txtPesquisa))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCampo4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtCampo8, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtCampo6)
+                                            .addComponent(txtCampo4))
+                                        .addGap(34, 34, 34)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblCampo5)
+                                    .addComponent(lblCampo7)
+                                    .addComponent(lblCampo9)
+                                    .addComponent(txtCampo5, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                    .addComponent(txtCampo7)
+                                    .addComponent(txtCampo9))))
                         .addGap(32, 32, 32))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,22 +1034,22 @@ public class FrmCrud extends javax.swing.JDialog {
                 .addComponent(lblCampo1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPrimeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUltimo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo4)
@@ -1013,19 +1074,20 @@ public class FrmCrud extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampo8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCampo8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCampo9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCampo9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(scrScrollcrud, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
+                .addComponent(scrScrollcrud, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1042,42 +1104,6 @@ public class FrmCrud extends javax.swing.JDialog {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void txtCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo1ActionPerformed
-
-    private void txtCampo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo2ActionPerformed
-
-    private void txtCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo3ActionPerformed
-
-    private void txtCampo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo5ActionPerformed
-
-    private void txtCampo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo4ActionPerformed
-
-    private void txtCampo7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo7ActionPerformed
-
-    private void txtCampo9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo9ActionPerformed
-
-    private void txtCampo8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo8ActionPerformed
-
-    private void txtCampo6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCampo6ActionPerformed
 
     // ===== Buttons =====
     private void btnPrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroActionPerformed
@@ -1253,62 +1279,6 @@ public class FrmCrud extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-        String Nome;     String Telefone;
-        String Endereco; String Descricao;
-        String RG;       String CPF;
-        
-        switch(this.table) {
-            case "Cliente":
-                Nome = txtCampo2.getText();
-                Telefone = txtCampo3.getText();
-                Endereco = txtCampo4.getText();
-                RG = txtCampo5.getText();
-                CPF = txtCampo6.getText();
-            break;
-                
-            case "Fornecedor":
-                Nome = txtCampo2.getText();
-                String CNPJ = txtCampo3.getText();
-                Telefone = txtCampo4.getText();
-                Endereco = txtCampo5.getText();
-            break;
-                    
-            case "Funcionario":
-                Nome = txtCampo2.getText();
-                String Salario = txtCampo3.getText();
-                String Email = txtCampo4.getText();
-                Telefone = txtCampo5.getText();
-                RG = txtCampo6.getText();
-                CPF = txtCampo7.getText();
-                String Usuario = txtCampo8.getText();
-                String Senha = txtCampo9.getText();
-            break;
-                
-            case "Produto":
-                Nome = txtCampo2.getText();
-                String Preco = txtCampo3.getText();
-                String CodTipoProd = txtCampo4.getText();
-                String CodFornecedor = txtCampo5.getText();
-            break;
-                    
-            case "Reserva":
-                String DataInicial = txtCampo2.getText();
-                String DataFinal = txtCampo3.getText();
-                String CodTipoReserva = txtCampo4.getText();
-                String CodCliente = txtCampo5.getText();
-                String CodFuncionario = txtCampo6.getText();
-                String CodProduto = txtCampo7.getText();
-            break;
-                    
-            case "Tipo do Produto":
-                Descricao = txtCampo2.getText();
-            break;
-                    
-            case "Tipo da Reserva":
-                Descricao = txtCampo2.getText();
-            break;
-            default:
-        } 
 
         String Campo1 = txtCampo1.getText();
         String Campo2 = txtCampo2.getText(); 
@@ -1499,8 +1469,8 @@ public class FrmCrud extends javax.swing.JDialog {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         txtCampo1.setText(""); 
-        txtCampo3.setText(""); 
-        txtCampo2.setText("");
+        txtCampo2.setText(""); 
+        txtCampo3.setText("");
         txtCampo4.setText(""); 
         txtCampo5.setText("");
         txtCampo6.setText("");
@@ -1514,6 +1484,14 @@ public class FrmCrud extends javax.swing.JDialog {
     private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisaActionPerformed
+
+    private void txtCampo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampo3ActionPerformed
+
+    private void txtCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1543,15 +1521,15 @@ public class FrmCrud extends javax.swing.JDialog {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JScrollPane scrScrollcrud;
     private javax.swing.JTable tblCrud;
-    private javax.swing.JTextField txtCampo1;
-    private javax.swing.JTextField txtCampo2;
-    private javax.swing.JTextField txtCampo3;
-    private javax.swing.JTextField txtCampo4;
-    private javax.swing.JTextField txtCampo5;
-    private javax.swing.JTextField txtCampo6;
-    private javax.swing.JTextField txtCampo7;
-    private javax.swing.JTextField txtCampo8;
-    private javax.swing.JTextField txtCampo9;
+    private javax.swing.JFormattedTextField txtCampo1;
+    private javax.swing.JFormattedTextField txtCampo2;
+    private javax.swing.JFormattedTextField txtCampo3;
+    private javax.swing.JFormattedTextField txtCampo4;
+    private javax.swing.JFormattedTextField txtCampo5;
+    private javax.swing.JFormattedTextField txtCampo6;
+    private javax.swing.JFormattedTextField txtCampo7;
+    private javax.swing.JFormattedTextField txtCampo8;
+    private javax.swing.JFormattedTextField txtCampo9;
     private javax.swing.JTextField txtPesquisa;
     // End of variables declaration//GEN-END:variables
 }

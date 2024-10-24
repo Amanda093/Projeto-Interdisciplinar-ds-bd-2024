@@ -24,12 +24,18 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menCliente">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Pessoas"/>
             <Property name="name" type="java.lang.String" value="menCliente" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="iteCliente">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
                 <Property name="name" type="java.lang.String" value="Cliente" noResource="true"/>
               </Properties>
@@ -39,6 +45,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="iteFuncionario">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Funcionario"/>
                 <Property name="name" type="java.lang.String" value="Funcionario" noResource="true"/>
               </Properties>
@@ -48,6 +57,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="iteFornecedor">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Fornecedor"/>
                 <Property name="name" type="java.lang.String" value="Fornecedor" noResource="true"/>
               </Properties>
@@ -59,12 +71,18 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menProduto">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
             <Property name="name" type="java.lang.String" value="menProduto" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="iteProduto">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Produto"/>
                 <Property name="name" type="java.lang.String" value="Produto" noResource="true"/>
               </Properties>
@@ -74,6 +92,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="iteTipoproduto">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tipo Produto"/>
                 <Property name="name" type="java.lang.String" value="Tipo Produto" noResource="true"/>
               </Properties>
@@ -85,12 +106,18 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menReserva">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Reserva"/>
             <Property name="name" type="java.lang.String" value="menReserva" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="iteReserva">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Reserva"/>
                 <Property name="name" type="java.lang.String" value="Reserva" noResource="true"/>
               </Properties>
@@ -100,6 +127,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="iteTiporeserva">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tipo Reserva"/>
                 <Property name="name" type="java.lang.String" value="Tipo Reserva" noResource="true"/>
               </Properties>
@@ -111,6 +141,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menSobre">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Sobre"/>
             <Property name="name" type="java.lang.String" value="menSobre" noResource="true"/>
           </Properties>
@@ -121,6 +154,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menSair">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="name" type="java.lang.String" value="menSair" noResource="true"/>
           </Properties>
