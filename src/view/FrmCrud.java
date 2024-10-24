@@ -331,6 +331,7 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo1);
                 
                 maskInteger.install(txtCampo2);
+                txtCampo2.setEditable(false);
                 
                 lblCampo2.setText("CodTipoProd:");
                 lblCampo3.setText("Descricao:");
@@ -388,6 +389,7 @@ public class FrmCrud extends javax.swing.JDialog {
                 getContentPane().remove(txtCampo1);
                 
                 maskInteger.install(txtCampo2);
+                txtCampo2.setEditable(false);
                 
                 lblCampo2.setText("CodTipoReserva:");
                 lblCampo3.setText("Descricao:");
@@ -430,6 +432,13 @@ public class FrmCrud extends javax.swing.JDialog {
             default:
                 
         }
+        try {
+        conexao.resultset.first(); // vai para o primeiro registro
+        apresentaDados(); } 
+        catch(SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Não foi possível acessar o registro"
+                    + erro, "Mensagem do Programa", JOptionPane.INFORMATION_MESSAGE); 
+        }  
     }
     
     
@@ -904,6 +913,7 @@ public class FrmCrud extends javax.swing.JDialog {
             }
         });
 
+        txtCampo1.setEditable(false);
         txtCampo1.setForeground(new java.awt.Color(51, 51, 51));
         txtCampo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCampo1.setName("txtCampo1"); // NOI18N
@@ -934,6 +944,11 @@ public class FrmCrud extends javax.swing.JDialog {
         txtCampo5.setForeground(new java.awt.Color(51, 51, 51));
         txtCampo5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCampo5.setName("txtCampo5"); // NOI18N
+        txtCampo5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampo5ActionPerformed(evt);
+            }
+        });
 
         txtCampo6.setForeground(new java.awt.Color(51, 51, 51));
         txtCampo6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -962,14 +977,14 @@ public class FrmCrud extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCampo6)
                             .addComponent(lblCampo8))
-                        .addGap(0, 607, Short.MAX_VALUE))
+                        .addGap(0, 604, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrScrollcrud)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCampo2)
-                                    .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCampo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCampo3)
@@ -988,7 +1003,7 @@ public class FrmCrud extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblCampo1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 294, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
@@ -1015,7 +1030,7 @@ public class FrmCrud extends javax.swing.JDialog {
                                     .addComponent(txtCampo9))))
                         .addGap(32, 32, 32))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(125, 125, 125)
                 .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1039,7 +1054,7 @@ public class FrmCrud extends javax.swing.JDialog {
                     .addComponent(btnAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProximo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCampo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo2)
@@ -1050,6 +1065,7 @@ public class FrmCrud extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCampo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCampo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo4)
@@ -1080,14 +1096,14 @@ public class FrmCrud extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblCampo9)
                         .addGap(32, 32, 32)))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(scrScrollcrud, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(scrScrollcrud, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1492,6 +1508,10 @@ public class FrmCrud extends javax.swing.JDialog {
     private void txtCampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampo1ActionPerformed
+
+    private void txtCampo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampo5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampo5ActionPerformed
 
     /**
      * @param args the command line arguments
